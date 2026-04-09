@@ -91,6 +91,12 @@
               O site vai montar o caminho lógico e dizer qual distribuição usar.
             </p>
             <div class="result-tags" data-result-tags></div>
+            <div class="solver-path" data-solver-path>
+              <span class="path-chip is-empty">Escolha um caminho para montar a trilha de decisão.</span>
+            </div>
+            <p class="solver-feedback" data-result-feedback>
+              Cada resposta reduz as opções até sobrar a distribuição certa.
+            </p>
             <div class="result-box">
               <h4>Por que?</h4>
               <p data-result-reason>
@@ -130,6 +136,51 @@
         </article>
       </section>
 
+      <section class="practice-lab" aria-label="Treino interativo" id="practice-lab">
+        <div class="formula-bank-head">
+          <div>
+            <p class="solver-label">Treino Interativo</p>
+            <h2>Treine a decisão antes da conta</h2>
+          </div>
+          <p class="formula-bank-note">
+            Dois modos: um para aprender o caminho e outro para se testar sem ajuda.
+          </p>
+        </div>
+
+        <article class="practice-card practice-card-unified">
+          <div class="practice-card-head">
+            <div>
+              <p class="formula-card-label">Treino</p>
+              <h3 data-practice-title>Escolha como quer estudar</h3>
+            </div>
+            <p class="quiz-progress" data-practice-progress>Pronto para começar</p>
+          </div>
+
+          <div class="practice-mode-switch" role="tablist" aria-label="Modo de treino">
+            <button type="button" class="choice-button practice-mode-button is-selected" data-practice-mode="guided" aria-pressed="true">Guiado</button>
+            <button type="button" class="choice-button practice-mode-button" data-practice-mode="test" aria-pressed="false">Teste</button>
+          </div>
+
+          <div class="practice-prompt-box">
+            <p class="practice-prompt-label">Enunciado</p>
+            <p class="practice-prompt" data-practice-prompt>
+              No modo guiado, você aprende o caminho da decisão com feedback imediato. No modo teste, responde 5 perguntas seguidas e vê a pontuação no final.
+            </p>
+          </div>
+          <div class="result-tags" data-practice-tags></div>
+          <div class="practice-options" data-practice-options></div>
+          <div class="practice-feedback" data-practice-feedback>
+            Escolha um modo acima para começar.
+          </div>
+          <div class="quiz-score" data-practice-score hidden></div>
+          <div class="practice-actions">
+            <button type="button" class="case-button" data-practice-start>Começar</button>
+            <button type="button" class="case-button secondary-button" data-practice-next disabled>Próximo</button>
+            <button type="button" class="case-button secondary-button" data-practice-view-related disabled>Ver bloco relacionado</button>
+          </div>
+        </article>
+      </section>
+
       <section class="formula-bank" aria-label="Banco de fórmulas">
         <div class="formula-bank-head">
           <div>
@@ -142,7 +193,7 @@
         </div>
 
         <div class="formula-bank-grid">
-          <article class="formula-card" data-formula-key="z-mean">
+          <article class="formula-card" data-formula-key="z-mean" data-focus-target="medias">
             <p class="formula-card-label">Duas médias, σ² conhecida</p>
             <h3>IC com Z</h3>
             <div class="math-block">
@@ -151,7 +202,7 @@
             <p>Use quando a variância populacional é conhecida.</p>
           </article>
 
-          <article class="formula-card" data-formula-key="t-pooled">
+          <article class="formula-card" data-formula-key="t-pooled" data-focus-target="medias">
             <p class="formula-card-label">Duas médias, σ² desconhecida e iguais</p>
             <h3>t com variância combinada</h3>
             <div class="math-block">
@@ -161,7 +212,7 @@
             <p>Aqui os graus de liberdade são \(gl=n_1+n_2-2\).</p>
           </article>
 
-          <article class="formula-card" data-formula-key="t-welch">
+          <article class="formula-card" data-formula-key="t-welch" data-focus-target="medias">
             <p class="formula-card-label">Duas médias, σ² desconhecida e diferentes</p>
             <h3>t de Welch</h3>
             <div class="math-block">
@@ -171,7 +222,7 @@
             <p>Quando as variâncias não podem ser tratadas como iguais.</p>
           </article>
 
-          <article class="formula-card" data-formula-key="t-paired">
+          <article class="formula-card" data-formula-key="t-paired" data-focus-target="medias">
             <p class="formula-card-label">Antes e depois</p>
             <h3>t para amostras pareadas</h3>
             <div class="math-block">
@@ -181,7 +232,7 @@
             <p>Primeiro reduza tudo a uma coluna de diferenças.</p>
           </article>
 
-          <article class="formula-card" data-formula-key="z-proportion">
+          <article class="formula-card" data-formula-key="z-proportion" data-focus-target="proporcoes">
             <p class="formula-card-label">Diferença de proporções</p>
             <h3>Z para proporções</h3>
             <div class="math-block">
@@ -191,7 +242,7 @@
             <p>Cheque se sucessos e falhas são pelo menos 5 em cada amostra.</p>
           </article>
 
-          <article class="formula-card" data-formula-key="f-variance">
+          <article class="formula-card" data-formula-key="f-variance" data-focus-target="distribuicoes">
             <p class="formula-card-label">Razão de variâncias</p>
             <h3>IC com F</h3>
             <div class="math-block">
@@ -200,7 +251,7 @@
             <p>Se o intervalo contém 1, não há evidência de variâncias diferentes.</p>
           </article>
 
-          <article class="formula-card" data-formula-key="chi-variance">
+          <article class="formula-card" data-formula-key="chi-variance" data-focus-target="distribuicoes">
             <p class="formula-card-label">Uma variância</p>
             <h3>IC com χ²</h3>
             <div class="math-block">
@@ -210,7 +261,7 @@
             <p>Suposição central: população normal.</p>
           </article>
 
-          <article class="formula-card" data-formula-key="chi-category">
+          <article class="formula-card" data-formula-key="chi-category" data-focus-target="qui-quadrado">
             <p class="formula-card-label">Tabela de contingência</p>
             <h3>Qui-quadrado de independência</h3>
             <div class="math-block">
@@ -220,7 +271,7 @@
             <p>Se o valor observado fica alto, rejeite \(H_0\) de independência.</p>
           </article>
 
-          <article class="formula-card" data-formula-key="chi-goodness">
+          <article class="formula-card" data-formula-key="chi-goodness" data-focus-target="qui-quadrado">
             <p class="formula-card-label">Observado vs esperado</p>
             <h3>Qui-quadrado de aderência</h3>
             <div class="math-block">
@@ -247,7 +298,7 @@
         </div>
 
         <div class="test-bank-grid">
-          <article class="test-card">
+          <article class="test-card" data-test-group="setup">
             <h3>Roteiro em 6 passos</h3>
             <ol class="steps-list">
               <li>Escreva <code>H₀</code> e <code>H₁</code>.</li>
@@ -259,7 +310,7 @@
             </ol>
           </article>
 
-          <article class="test-card">
+          <article class="test-card" data-test-group="medias proporcao">
             <h3>Estatísticas mais cobradas</h3>
             <div class="math-block">
               $$Z=\frac{(\bar{x}_1-\bar{x}_2)-\Delta_0}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}$$
@@ -269,7 +320,7 @@
             </div>
           </article>
 
-          <article class="test-card">
+          <article class="test-card" data-test-group="setup">
             <h3>Regras de decisão</h3>
             <ul class="clean-list">
               <li><strong>Teste bilateral:</strong> rejeite se cair em qualquer cauda crítica.</li>
@@ -279,7 +330,7 @@
             </ul>
           </article>
 
-          <article class="test-card">
+          <article class="test-card" data-test-group="medias">
             <h3>Visual para hipóteses unilaterais</h3>
             <ul class="clean-list">
               <li><strong>\(H_1:\mu_1 &gt; \mu_2\)</strong> → região crítica à direita → valor crítico positivo.</li>
@@ -288,7 +339,7 @@
             </ul>
           </article>
 
-          <article class="test-card">
+          <article class="test-card" data-test-group="chi proporcao">
             <h3>Suposições que aparecem no enunciado</h3>
             <ul class="clean-list">
               <li><strong>Normalidade:</strong> importante para amostras pequenas em testes com médias.</li>
@@ -320,42 +371,84 @@
             <p class="formula-card-label">Questão tipo 1 e 11</p>
             <h3>Lâmpadas ou consumo com σ conhecido</h3>
             <p>Dois grupos independentes, média comparada e desvio populacional informado no enunciado.</p>
-            <button type="button" class="case-button">Usar este caso</button>
+            <div class="case-actions">
+              <button type="button" class="case-button">Usar este caso</button>
+              <button type="button" class="case-button secondary-button" data-case-explain>Mostrar resolução</button>
+            </div>
+            <div class="case-resolution is-hidden">
+              <p><strong>Ferramenta:</strong> <code>Z</code> para duas médias independentes com variâncias populacionais conhecidas.</p>
+              <p><strong>Pista do enunciado:</strong> quando o desvio populacional já vem dado, você não cai na família <code>t</code>.</p>
+            </div>
           </article>
 
           <article class="case-card" data-case-target="media" data-case-relation="independente" data-case-variance-known="nao" data-case-variance-equality="iguais" data-case-focus="medias">
             <p class="formula-card-label">Questão tipo 2 e 17</p>
             <h3>Método tradicional vs novo, variâncias iguais</h3>
             <p>Duas médias, variância populacional desconhecida, mas o enunciado assume homocedasticidade.</p>
-            <button type="button" class="case-button">Usar este caso</button>
+            <div class="case-actions">
+              <button type="button" class="case-button">Usar este caso</button>
+              <button type="button" class="case-button secondary-button" data-case-explain>Mostrar resolução</button>
+            </div>
+            <div class="case-resolution is-hidden">
+              <p><strong>Ferramenta:</strong> <code>t</code> com variância combinada.</p>
+              <p><strong>Pista do enunciado:</strong> variâncias desconhecidas mas tratadas como iguais empurram para o caso pooled.</p>
+            </div>
           </article>
 
           <article class="case-card" data-case-target="media" data-case-relation="pareada" data-case-focus="medias">
             <p class="formula-card-label">Questão tipo 4 e 18</p>
             <h3>Antes e depois da dieta</h3>
             <p>Mesmas pessoas medidas duas vezes. Primeiro transforme tudo em diferenças <code>d</code>.</p>
-            <button type="button" class="case-button">Usar este caso</button>
+            <div class="case-actions">
+              <button type="button" class="case-button">Usar este caso</button>
+              <button type="button" class="case-button secondary-button" data-case-explain>Mostrar resolução</button>
+            </div>
+            <div class="case-resolution is-hidden">
+              <p><strong>Ferramenta:</strong> <code>t</code> pareado nas diferenças.</p>
+              <p><strong>Pista do enunciado:</strong> a mesma pessoa aparece duas vezes, então não são dois grupos independentes.</p>
+            </div>
           </article>
 
           <article class="case-card" data-case-target="proporcao" data-case-focus="proporcoes">
             <p class="formula-card-label">Questão tipo 5 e 13</p>
             <h3>Região Norte vs Sul em porcentagens</h3>
             <p>Comparação de taxas, intenções de voto, satisfação ou sucesso em dois grupos.</p>
-            <button type="button" class="case-button">Usar este caso</button>
+            <div class="case-actions">
+              <button type="button" class="case-button">Usar este caso</button>
+              <button type="button" class="case-button secondary-button" data-case-explain>Mostrar resolução</button>
+            </div>
+            <div class="case-resolution is-hidden">
+              <p><strong>Ferramenta:</strong> <code>Z</code> para diferença de proporções.</p>
+              <p><strong>Pista do enunciado:</strong> se o dado central é percentual ou taxa, pense em proporção antes de pensar em média.</p>
+            </div>
           </article>
 
           <article class="case-card" data-case-target="variancia" data-case-focus="distribuicoes">
             <p class="formula-card-label">Questão tipo 6, 7, 14 e 15</p>
             <h3>Balanças, operadores e precisão</h3>
             <p>Se a pergunta fala de variabilidade, precisão ou razão de variâncias, pense em <code>F</code> ou <code>χ²</code>.</p>
-            <button type="button" class="case-button">Usar este caso</button>
+            <div class="case-actions">
+              <button type="button" class="case-button">Usar este caso</button>
+              <button type="button" class="case-button secondary-button" data-case-explain>Mostrar resolução</button>
+            </div>
+            <div class="case-resolution is-hidden">
+              <p><strong>Ferramenta:</strong> <code>χ²</code> se for uma variância só; <code>F</code> se comparar duas variâncias.</p>
+              <p><strong>Pista do enunciado:</strong> a palavra “razão” costuma denunciar <code>F</code>.</p>
+            </div>
           </article>
 
           <article class="case-card" data-case-target="categoria" data-case-focus="qui-quadrado">
             <p class="formula-card-label">Questão tipo 19+</p>
             <h3>Tabelas com categorias</h3>
             <p>Sexo, plano, satisfação, cura, tratamento, preferência: tabela de contingência e independência.</p>
-            <button type="button" class="case-button">Usar este caso</button>
+            <div class="case-actions">
+              <button type="button" class="case-button">Usar este caso</button>
+              <button type="button" class="case-button secondary-button" data-case-explain>Mostrar resolução</button>
+            </div>
+            <div class="case-resolution is-hidden">
+              <p><strong>Ferramenta:</strong> <code>χ²</code> de independência.</p>
+              <p><strong>Pista do enunciado:</strong> quando duas variáveis categóricas são cruzadas em tabela, a pergunta é sobre associação.</p>
+            </div>
           </article>
         </div>
       </section>
@@ -604,6 +697,10 @@
       </section>
     </main>
   </div>
+
+  <button type="button" class="floating-return is-hidden" data-floating-return>
+    Voltar ao treino
+  </button>
 
   <script src="script.js"></script>
 </body>
