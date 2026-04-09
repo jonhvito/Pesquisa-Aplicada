@@ -223,6 +223,16 @@
             </div>
             <p>Se o valor observado fica alto, rejeite \(H_0\) de independência.</p>
           </article>
+
+          <article class="formula-card" data-formula-key="chi-goodness">
+            <p class="formula-card-label">Observado vs esperado</p>
+            <h3>Qui-quadrado de aderência</h3>
+            <div class="math-block">
+              $$E_i=n\cdot p_i$$
+              $$\chi^2=\sum \frac{(O_i-E_i)^2}{E_i}$$
+            </div>
+            <p>Use quando a pergunta é se a distribuição observada segue uma distribuição teórica esperada.</p>
+          </article>
         </div>
       </section>
 
@@ -274,12 +284,22 @@
           </article>
 
           <article class="test-card">
+            <h3>Visual para hipóteses unilaterais</h3>
+            <ul class="clean-list">
+              <li><strong>\(H_1:\mu_1 &gt; \mu_2\)</strong> → região crítica à direita → valor crítico positivo.</li>
+              <li><strong>\(H_1:\mu_1 &lt; \mu_2\)</strong> → região crítica à esquerda → valor crítico negativo.</li>
+              <li><strong>\(H_1:\mu_1 \neq \mu_2\)</strong> → duas caudas → corte em \(\pm\) valor crítico.</li>
+            </ul>
+          </article>
+
+          <article class="test-card">
             <h3>Suposições que aparecem no enunciado</h3>
             <ul class="clean-list">
               <li><strong>Normalidade:</strong> importante para amostras pequenas em testes com médias.</li>
               <li><strong>Homocedasticidade:</strong> necessária quando a questão manda usar variâncias iguais.</li>
               <li><strong>Independência:</strong> essencial em praticamente todos os casos.</li>
               <li><strong>Contagens esperadas ≥ 5:</strong> cheque isso no qui-quadrado e em proporções.</li>
+              <li><strong>Se violar no χ²:</strong> a aproximação piora; em tabela 2x2 pode aparecer Fisher, e em outros casos pode ser preciso agrupar categorias.</li>
             </ul>
           </article>
         </div>
@@ -450,6 +470,7 @@
                 <li><strong>Conheço σ²₁ e σ²₂:</strong> use <code>Z</code>.</li>
                 <li><strong>Não conheço, mas são iguais:</strong> use <code>t</code> com variância combinada <code>S²p</code>.</li>
                 <li><strong>Não conheço e são diferentes:</strong> use <code>t</code> com a lógica de Welch.</li>
+                <li><strong>No caso Welch:</strong> não esqueça os graus de liberdade aproximados <code>ν</code>.</li>
               </ul>
             </section>
 
@@ -502,17 +523,31 @@
             <span class="node-number">5</span>
             <div>
               <h2>Teste Qui-Quadrado</h2>
-              <p class="node-subtitle">Quando a questão cruza categorias em tabela.</p>
+              <p class="node-subtitle">Tanto para independência em tabela quanto para aderência a uma distribuição esperada.</p>
             </div>
           </div>
 
-          <ol class="steps-list">
-            <li>Monte a tabela com os valores <strong>observados</strong>.</li>
-            <li>Assuma <code>H₀</code>: as características são <strong>independentes</strong>.</li>
-            <li>Calcule o esperado por célula: <code>(Total da linha × Total da coluna) / Total geral</code>.</li>
-            <li>Some tudo em <code>Σ (O - E)² / E</code>.</li>
-            <li>Se o valor ficar alto, rejeite <code>H₀</code>: existe associação.</li>
-          </ol>
+          <div class="panel-stack">
+            <section class="mini-panel">
+              <h3>Independência</h3>
+              <ol class="steps-list">
+                <li>Monte a tabela com os valores <strong>observados</strong>.</li>
+                <li>Assuma <code>H₀</code>: as características são <strong>independentes</strong>.</li>
+                <li>Calcule o esperado por célula: <code>(Total da linha × Total da coluna) / Total geral</code>.</li>
+                <li>Some tudo em <code>Σ (O - E)² / E</code>.</li>
+              </ol>
+            </section>
+
+            <section class="mini-panel">
+              <h3>Aderência</h3>
+              <ol class="steps-list">
+                <li>Defina a distribuição esperada sob <code>H₀</code>.</li>
+                <li>Calcule cada esperado como <code>E = n × p</code>.</li>
+                <li>Compare observado e esperado via <code>Σ (O - E)² / E</code>.</li>
+                <li>Se ficar alto, rejeite <code>H₀</code>: a distribuição observada não segue a esperada.</li>
+              </ol>
+            </section>
+          </div>
         </article>
 
         <article class="node node-cheats" id="interpretacao" tabindex="0" role="button" aria-pressed="false">
@@ -542,6 +577,7 @@
             <li>Os grupos são independentes ou pareados?</li>
             <li>Se forem independentes: a variância populacional é conhecida?</li>
             <li>Conhecida → <code>Z</code>. Desconhecida → <code>t</code>.</li>
+            <li>Se for <code>t</code> com variâncias diferentes, lembre do <code>ν</code> de Welch.</li>
             <li>Se forem pareados: transforme tudo em diferenças <code>d</code>.</li>
           </ol>
         </article>

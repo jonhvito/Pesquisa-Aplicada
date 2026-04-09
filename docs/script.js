@@ -156,13 +156,13 @@ function getDecision() {
   if (target === "categoria") {
     return {
       title: "Use χ² para categorias",
-      summary: "Se a questão cruza categorias em tabela, o foco é associação ou independência.",
+      summary: "Se a questão trabalha com frequências observadas, pode ser independência em tabela ou aderência a uma distribuição esperada.",
       reason:
-        "Esse caso pede tabela de contingência, valores observados, valores esperados e a soma Σ (O - E)² / E.",
+        "No χ² de independência você compara categorias em tabela. No χ² de aderência você compara observado contra esperado teórico.",
       reading:
-        "Leitura de prova: palavras como sexo, preferência, fumante, doente, aprovado e reprovado costumam puxar χ².",
-      tags: ["Categoria", "Qui-Quadrado", "Independência"],
-      formulas: ["chi-category"],
+        "Leitura de prova: tabela cruzada puxa independência; distribuição esperada, uniformidade ou proporções teóricas puxam aderência.",
+      tags: ["Categoria", "Qui-Quadrado", "Independência ou aderência"],
+      formulas: ["chi-category", "chi-goodness"],
     };
   }
 
