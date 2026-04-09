@@ -382,6 +382,30 @@ body::before {
   line-height: 1.55;
 }
 
+.inline-doc-link {
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 1.02em;
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.14em;
+}
+
+.inline-doc-link::before {
+  content: "PDF";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.12rem 0.38rem;
+  border-radius: 999px;
+  background: rgba(23, 56, 65, 0.1);
+  font-size: 0.72em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .formula-bank-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
