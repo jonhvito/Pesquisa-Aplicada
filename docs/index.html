@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa Mental | Estatística Salva-Vidas</title>
+  <meta
+    name="description"
+    content="Mapa mental estático de revisão de estatística com IC, testes de hipóteses, distribuições, diferença de médias, proporções e qui-quadrado."
+  >
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Revisão de Véspera</p>
+        <h1>🧠 Estatística Salva-Vidas</h1>
+        <p class="subtitle">
+          Um mapa mental para bater o olho, decidir a distribuição certa e responder
+          a prova sem confundir <strong>IC</strong>, <strong>TH</strong>,
+          <strong>médias</strong>, <strong>proporções</strong> e
+          <strong>categorias</strong>.
+        </p>
+      </div>
+
+      <aside class="hero-note" aria-label="Resumo mais importante">
+        <p class="note-label">Primeira pergunta da prova</p>
+        <h2>O que a questão quer comparar?</h2>
+        <ul class="hero-list">
+          <li><strong>Média</strong> → pense em <code>Z</code> ou <code>t</code></li>
+          <li><strong>Proporção</strong> → quase sempre <code>Z</code></li>
+          <li><strong>Variância</strong> → pense em <code>χ²</code> ou <code>F</code></li>
+          <li><strong>Categorias</strong> → pense em <code>χ²</code></li>
+        </ul>
+      </aside>
+    </header>
+
+    <main>
+      <section class="solver" aria-label="Assistente para escolher a distribuição">
+        <div class="solver-head">
+          <div>
+            <p class="solver-label">Assistente de decisão</p>
+            <h2>Escolha a distribuição sem adivinhar</h2>
+          </div>
+          <button class="reset-button" type="button" data-reset-solver>Limpar</button>
+        </div>
+
+        <div class="solver-grid">
+          <article class="solver-panel">
+            <h3>1. O que a questão quer comparar?</h3>
+            <div class="choice-group" data-question="target">
+              <button type="button" class="choice-button" data-value="media">Média</button>
+              <button type="button" class="choice-button" data-value="proporcao">Proporção</button>
+              <button type="button" class="choice-button" data-value="variancia">Variância</button>
+              <button type="button" class="choice-button" data-value="categoria">Categoria</button>
+            </div>
+          </article>
+
+          <article class="solver-panel is-hidden" data-panel="relation">
+            <h3>2. Se for média: como são as amostras?</h3>
+            <div class="choice-group" data-question="relation">
+              <button type="button" class="choice-button" data-value="independente">Independentes</button>
+              <button type="button" class="choice-button" data-value="pareada">Pareadas</button>
+            </div>
+          </article>
+
+          <article class="solver-panel is-hidden" data-panel="variance-known">
+            <h3>3. A variância populacional é conhecida?</h3>
+            <div class="choice-group" data-question="varianceKnown">
+              <button type="button" class="choice-button" data-value="sim">Sim</button>
+              <button type="button" class="choice-button" data-value="nao">Não</button>
+            </div>
+          </article>
+
+          <article class="solver-panel is-hidden" data-panel="variance-equality">
+            <h3>4. A questão diz que as variâncias são iguais?</h3>
+            <div class="choice-group" data-question="varianceEquality">
+              <button type="button" class="choice-button" data-value="iguais">Sim, iguais</button>
+              <button type="button" class="choice-button" data-value="diferentes">Não, diferentes</button>
+            </div>
+          </article>
+
+          <article class="solver-result" aria-live="polite">
+            <p class="solver-label">Resultado</p>
+            <h3 data-result-title>Responda as perguntas acima</h3>
+            <p class="solver-summary" data-result-summary>
+              O site vai montar o caminho lógico e dizer qual distribuição usar.
+            </p>
+            <div class="result-tags" data-result-tags></div>
+            <div class="result-box">
+              <h4>Por que?</h4>
+              <p data-result-reason>
+                Comece pelo tipo de variável. Depois o assistente restringe as opções.
+              </p>
+            </div>
+            <div class="result-box">
+              <h4>Leitura de prova</h4>
+              <p data-result-reading>
+                O objetivo aqui é sair de “decorar tudo” para “decidir pelo enunciado”.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="decision-strip" aria-label="Fluxo de decisão rápido">
+        <article class="decision-card">
+          <span class="decision-step">1</span>
+          <h2>Identifique o alvo</h2>
+          <p>A questão fala de média, proporção, variância ou categorias?</p>
+        </article>
+        <article class="decision-card">
+          <span class="decision-step">2</span>
+          <h2>Cheque a informação</h2>
+          <p>Você conhece a variância populacional? Os grupos são independentes ou pareados?</p>
+        </article>
+        <article class="decision-card">
+          <span class="decision-step">3</span>
+          <h2>Escolha a chave</h2>
+          <p>Use <code>Z</code>, <code>t</code>, <code>χ²</code> ou <code>F</code>.</p>
+        </article>
+        <article class="decision-card">
+          <span class="decision-step">4</span>
+          <h2>Interprete direito</h2>
+          <p>Pense no zero, no um e no p-valor antes de concluir.</p>
+        </article>
+      </section>
+
+      <p class="helper-text">
+        Clique em um bloco para focar naquele assunto. Pressione <kbd>Esc</kbd> para voltar à visão completa.
+      </p>
+
+      <section class="formula-bank" aria-label="Banco de fórmulas">
+        <div class="formula-bank-head">
+          <div>
+            <p class="solver-label">Fórmulas úteis</p>
+            <h2>O que cai na conta de verdade</h2>
+          </div>
+          <p class="formula-bank-note">
+            O assistente acima destaca automaticamente a fórmula mais provável para o caso escolhido.
+          </p>
+        </div>
+
+        <div class="formula-bank-grid">
+          <article class="formula-card" data-formula-key="z-mean">
+            <p class="formula-card-label">Duas médias, σ² conhecida</p>
+            <h3>IC com Z</h3>
+            <div class="math-block">
+              $$IC(\mu_1-\mu_2)= (\bar{x}_1-\bar{x}_2)\pm z_{\alpha/2}\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}$$
+            </div>
+            <p>Use quando a variância populacional é conhecida.</p>
+          </article>
+
+          <article class="formula-card" data-formula-key="t-pooled">
+            <p class="formula-card-label">Duas médias, σ² desconhecida e iguais</p>
+            <h3>t com variância combinada</h3>
+            <div class="math-block">
+              $$S_p^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}$$
+              $$IC(\mu_1-\mu_2)= (\bar{x}_1-\bar{x}_2)\pm t_{\alpha/2,\,gl}\sqrt{S_p^2\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}$$
+            </div>
+            <p>Aqui os graus de liberdade são \(gl=n_1+n_2-2\).</p>
+          </article>
+
+          <article class="formula-card" data-formula-key="t-welch">
+            <p class="formula-card-label">Duas médias, σ² desconhecida e diferentes</p>
+            <h3>t de Welch</h3>
+            <div class="math-block">
+              $$IC(\mu_1-\mu_2)= (\bar{x}_1-\bar{x}_2)\pm t_{\alpha/2,\,\nu}\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$$
+              $$\nu=\frac{\left(\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}\right)^2}{\frac{(s_1^2/n_1)^2}{n_1-1}+\frac{(s_2^2/n_2)^2}{n_2-1}}$$
+            </div>
+            <p>Quando as variâncias não podem ser tratadas como iguais.</p>
+          </article>
+
+          <article class="formula-card" data-formula-key="t-paired">
+            <p class="formula-card-label">Antes e depois</p>
+            <h3>t para amostras pareadas</h3>
+            <div class="math-block">
+              $$d_i=\text{Depois}_i-\text{Antes}_i,\qquad \bar d=\frac{\sum d_i}{n}$$
+              $$IC(\mu_d)=\bar d \pm t_{\alpha/2,\,n-1}\frac{s_d}{\sqrt n}$$
+            </div>
+            <p>Primeiro reduza tudo a uma coluna de diferenças.</p>
+          </article>
+
+          <article class="formula-card" data-formula-key="z-proportion">
+            <p class="formula-card-label">Diferença de proporções</p>
+            <h3>Z para proporções</h3>
+            <div class="math-block">
+              $$IC(p_1-p_2)= (\hat p_1-\hat p_2)\pm z_{\alpha/2}\sqrt{\frac{\hat p_1(1-\hat p_1)}{n_1}+\frac{\hat p_2(1-\hat p_2)}{n_2}}$$
+              $$\hat p=\frac{x_1+x_2}{n_1+n_2} \quad \text{(no teste sob } H_0:p_1=p_2\text{)}$$
+            </div>
+            <p>Cheque se sucessos e falhas são pelo menos 5 em cada amostra.</p>
+          </article>
+
+          <article class="formula-card" data-formula-key="f-variance">
+            <p class="formula-card-label">Razão de variâncias</p>
+            <h3>IC com F</h3>
+            <div class="math-block">
+              $$IC\left(\frac{\sigma_1^2}{\sigma_2^2}\right)=\left[\frac{s_1^2}{s_2^2}\cdot\frac{1}{F_{\alpha/2}(gl_1,gl_2)},\ \frac{s_1^2}{s_2^2}\cdot F_{\alpha/2}(gl_2,gl_1)\right]$$
+            </div>
+            <p>Se o intervalo contém 1, não há evidência de variâncias diferentes.</p>
+          </article>
+
+          <article class="formula-card" data-formula-key="chi-variance">
+            <p class="formula-card-label">Uma variância</p>
+            <h3>IC com χ²</h3>
+            <div class="math-block">
+              $$IC(\sigma^2)=\left[\frac{(n-1)S^2}{\chi^2_{\alpha/2}},\ \frac{(n-1)S^2}{\chi^2_{1-\alpha/2}}\right]$$
+              $$IC(\sigma)=\left[\sqrt{\text{limite inferior}},\ \sqrt{\text{limite superior}}\right]$$
+            </div>
+            <p>Suposição central: população normal.</p>
+          </article>
+
+          <article class="formula-card" data-formula-key="chi-category">
+            <p class="formula-card-label">Tabela de contingência</p>
+            <h3>Qui-quadrado de independência</h3>
+            <div class="math-block">
+              $$E_{ij}=\frac{(\text{Total da linha})(\text{Total da coluna})}{\text{Total geral}}$$
+              $$\chi^2=\sum \frac{(O-E)^2}{E}$$
+            </div>
+            <p>Se o valor observado fica alto, rejeite \(H_0\) de independência.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="test-bank" aria-label="Guia de testes de hipótese">
+        <div class="formula-bank-head">
+          <div>
+            <p class="solver-label">Teste de Hipótese</p>
+            <h2>Como montar a decisão estatística</h2>
+          </div>
+          <p class="formula-bank-note">
+            Material puxado da <strong>lista de revisão</strong>: estatística, regra de rejeição e suposição.
+          </p>
+        </div>
+
+        <div class="test-bank-grid">
+          <article class="test-card">
+            <h3>Roteiro em 6 passos</h3>
+            <ol class="steps-list">
+              <li>Escreva <code>H₀</code> e <code>H₁</code>.</li>
+              <li>Fixe o nível de significância <code>α</code>.</li>
+              <li>Escolha a estatística: <code>Z</code>, <code>t</code>, <code>F</code> ou <code>χ²</code>.</li>
+              <li>Defina a região crítica ou use o p-valor.</li>
+              <li>Calcule a estatística do teste.</li>
+              <li>Conclua: rejeita ou não rejeita <code>H₀</code>.</li>
+            </ol>
+          </article>
+
+          <article class="test-card">
+            <h3>Estatísticas mais cobradas</h3>
+            <div class="math-block">
+              $$Z=\frac{(\bar{x}_1-\bar{x}_2)-\Delta_0}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}}$$
+              $$t=\frac{(\bar{x}_1-\bar{x}_2)-\Delta_0}{\sqrt{S_p^2\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}$$
+              $$t=\frac{\bar d-\Delta_0}{s_d/\sqrt n}$$
+              $$Z=\frac{(\hat p_1-\hat p_2)-0}{\sqrt{\hat p(1-\hat p)\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}$$
+            </div>
+          </article>
+
+          <article class="test-card">
+            <h3>Regras de decisão</h3>
+            <ul class="clean-list">
+              <li><strong>Teste bilateral:</strong> rejeite se cair em qualquer cauda crítica.</li>
+              <li><strong>Teste unilateral à direita:</strong> rejeite se a estatística for grande demais.</li>
+              <li><strong>Teste unilateral à esquerda:</strong> rejeite se a estatística for pequena demais.</li>
+              <li><strong>Regra do p-valor:</strong> se <code>p ≤ α</code>, rejeite <code>H₀</code>.</li>
+            </ul>
+          </article>
+
+          <article class="test-card">
+            <h3>Suposições que aparecem no enunciado</h3>
+            <ul class="clean-list">
+              <li><strong>Normalidade:</strong> importante para amostras pequenas em testes com médias.</li>
+              <li><strong>Homocedasticidade:</strong> necessária quando a questão manda usar variâncias iguais.</li>
+              <li><strong>Independência:</strong> essencial em praticamente todos os casos.</li>
+              <li><strong>Contagens esperadas ≥ 5:</strong> cheque isso no qui-quadrado e em proporções.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-bank" aria-label="Casos clássicos de prova">
+        <div class="formula-bank-head">
+          <div>
+            <p class="solver-label">Casos Clássicos</p>
+            <h2>Exemplos rápidos para reconhecer o tipo da questão</h2>
+          </div>
+          <p class="formula-bank-note">
+            Casos adaptados da <strong>lista de revisão</strong>. Clique para jogar o exemplo no assistente.
+          </p>
+        </div>
+
+        <div class="case-bank-grid">
+          <article class="case-card" data-case-target="media" data-case-relation="independente" data-case-variance-known="sim" data-case-focus="medias">
+            <p class="formula-card-label">Questão tipo 1 e 11</p>
+            <h3>Lâmpadas ou consumo com σ conhecido</h3>
+            <p>Dois grupos independentes, média comparada e desvio populacional informado no enunciado.</p>
+            <button type="button" class="case-button">Usar este caso</button>
+          </article>
+
+          <article class="case-card" data-case-target="media" data-case-relation="independente" data-case-variance-known="nao" data-case-variance-equality="iguais" data-case-focus="medias">
+            <p class="formula-card-label">Questão tipo 2 e 17</p>
+            <h3>Método tradicional vs novo, variâncias iguais</h3>
+            <p>Duas médias, variância populacional desconhecida, mas o enunciado assume homocedasticidade.</p>
+            <button type="button" class="case-button">Usar este caso</button>
+          </article>
+
+          <article class="case-card" data-case-target="media" data-case-relation="pareada" data-case-focus="medias">
+            <p class="formula-card-label">Questão tipo 4 e 18</p>
+            <h3>Antes e depois da dieta</h3>
+            <p>Mesmas pessoas medidas duas vezes. Primeiro transforme tudo em diferenças <code>d</code>.</p>
+            <button type="button" class="case-button">Usar este caso</button>
+          </article>
+
+          <article class="case-card" data-case-target="proporcao" data-case-focus="proporcoes">
+            <p class="formula-card-label">Questão tipo 5 e 13</p>
+            <h3>Região Norte vs Sul em porcentagens</h3>
+            <p>Comparação de taxas, intenções de voto, satisfação ou sucesso em dois grupos.</p>
+            <button type="button" class="case-button">Usar este caso</button>
+          </article>
+
+          <article class="case-card" data-case-target="variancia" data-case-focus="distribuicoes">
+            <p class="formula-card-label">Questão tipo 6, 7, 14 e 15</p>
+            <h3>Balanças, operadores e precisão</h3>
+            <p>Se a pergunta fala de variabilidade, precisão ou razão de variâncias, pense em <code>F</code> ou <code>χ²</code>.</p>
+            <button type="button" class="case-button">Usar este caso</button>
+          </article>
+
+          <article class="case-card" data-case-target="categoria" data-case-focus="qui-quadrado">
+            <p class="formula-card-label">Questão tipo 19+</p>
+            <h3>Tabelas com categorias</h3>
+            <p>Sexo, plano, satisfação, cura, tratamento, preferência: tabela de contingência e independência.</p>
+            <button type="button" class="case-button">Usar este caso</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="mindmap" aria-label="Mapa mental principal">
+        <article class="node node-goal" id="objetivo" tabindex="0" role="button" aria-pressed="false">
+          <div class="node-header">
+            <span class="node-number">1</span>
+            <div>
+              <h2>IC vs TH</h2>
+              <p class="node-subtitle">As duas ideias que mais confundem no começo.</p>
+            </div>
+          </div>
+
+          <div class="panel-stack">
+            <section class="mini-panel">
+              <h3>Intervalo de Confiança</h3>
+              <p>
+                É um <strong>chute inteligente com margem de erro</strong> sobre o parâmetro real.
+                Exemplo mental: “a diferença real deve estar entre 2 e 5”.
+              </p>
+              <p class="callout-line">
+                Se o intervalo da diferença <strong>não contém o zero</strong>, há evidência de diferença.
+              </p>
+            </section>
+
+            <section class="mini-panel">
+              <h3>Teste de Hipóteses</h3>
+              <p>
+                Você assume o papel do advogado do diabo: parte de <code>H₀</code>, que normalmente diz
+                <strong>“não há diferença”</strong>, e tenta ver se os dados derrubam isso.
+              </p>
+              <div class="formula-row">
+                <span class="formula-chip">H₀: diferença = 0</span>
+                <span class="formula-chip">H₁: diferença ≠ 0</span>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <article class="node node-keys" id="distribuicoes" tabindex="0" role="button" aria-pressed="false">
+          <div class="node-header">
+            <span class="node-number">2</span>
+            <div>
+              <h2>As 4 Chaves</h2>
+              <p class="node-subtitle">Qual distribuição usar em cada tipo de questão.</p>
+            </div>
+          </div>
+
+          <div class="key-grid">
+            <section class="key-card">
+              <h3>Z</h3>
+              <p><strong>Use:</strong> proporções ou médias com variância populacional conhecida.</p>
+              <p><strong>Ideia:</strong> é a chave mestra da prova.</p>
+            </section>
+
+            <section class="key-card">
+              <h3>t de Student</h3>
+              <p><strong>Use:</strong> médias com variância populacional desconhecida.</p>
+              <p><strong>Lembrete:</strong> precisa de graus de liberdade.</p>
+            </section>
+
+            <section class="key-card">
+              <h3>χ²</h3>
+              <p><strong>Use:</strong> uma variância ou tabelas com categorias.</p>
+              <p><strong>Lembrete:</strong> só assume valores positivos.</p>
+            </section>
+
+            <section class="key-card">
+              <h3>F</h3>
+              <p><strong>Use:</strong> comparação entre duas variâncias.</p>
+              <p><strong>Ideia:</strong> é uma razão entre variâncias.</p>
+            </section>
+          </div>
+        </article>
+
+        <div class="hub" aria-label="Núcleo do mapa">
+          <p class="hub-label">Centro do mapa</p>
+          <h2>Escolha a ferramenta certa</h2>
+          <p>
+            O segredo da prova não é decorar tudo ao mesmo tempo. É fazer a pergunta certa:
+            <strong>o enunciado está falando de média, proporção, variância ou categoria?</strong>
+          </p>
+          <div class="hub-points">
+            <button type="button" class="hub-chip" data-hub-target="media">Média</button>
+            <button type="button" class="hub-chip" data-hub-target="proporcao">Proporção</button>
+            <button type="button" class="hub-chip" data-hub-target="variancia">Variância</button>
+            <button type="button" class="hub-chip" data-hub-target="categoria">Categoria</button>
+          </div>
+          <div class="hub-reminder">
+            <strong>Atalho mental:</strong> primeiro escolha a distribuição, depois faça a conta.
+          </div>
+        </div>
+
+        <article class="node node-means" id="medias" tabindex="0" role="button" aria-pressed="false">
+          <div class="node-header">
+            <span class="node-number">3</span>
+            <div>
+              <h2>Diferença de Médias</h2>
+              <p class="node-subtitle">Altura, peso, salário, nota: aqui a pergunta é sobre média.</p>
+            </div>
+          </div>
+
+          <div class="panel-stack">
+            <section class="mini-panel">
+              <h3>Amostras independentes</h3>
+              <ul class="clean-list">
+                <li><strong>Conheço σ²₁ e σ²₂:</strong> use <code>Z</code>.</li>
+                <li><strong>Não conheço, mas são iguais:</strong> use <code>t</code> com variância combinada <code>S²p</code>.</li>
+                <li><strong>Não conheço e são diferentes:</strong> use <code>t</code> com a lógica de Welch.</li>
+              </ul>
+            </section>
+
+            <section class="mini-panel">
+              <h3>Amostras pareadas</h3>
+              <p>
+                Mesmo grupo antes e depois? Esqueça que são dois grupos.
+                Calcule <code>d = depois - antes</code> para cada pessoa e faça um
+                <strong>teste t nas diferenças</strong>.
+              </p>
+              <div class="formula-row">
+                <span class="formula-chip">H₀: μd = 0</span>
+                <span class="formula-chip">Pareado = um grupo de diferenças</span>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <article class="node node-props" id="proporcoes" tabindex="0" role="button" aria-pressed="false">
+          <div class="node-header">
+            <span class="node-number">4</span>
+            <div>
+              <h2>Diferença de Proporções</h2>
+              <p class="node-subtitle">Porcentagens, aprovação, voto, taxa de sucesso.</p>
+            </div>
+          </div>
+
+          <div class="panel-stack">
+            <section class="mini-panel">
+              <h3>Regra principal</h3>
+              <p>
+                Aqui a vida é mais simples: para comparar proporções, pense primeiro em
+                <strong><code>Z</code></strong>.
+              </p>
+            </section>
+
+            <section class="mini-panel">
+              <h3>No IC e no TH</h3>
+              <ul class="clean-list">
+                <li><strong>IC:</strong> diferença entre proporções ± margem com <code>Z</code>.</li>
+                <li><strong>TH:</strong> em <code>H₀</code>, use a proporção combinada <code>p̂</code>.</li>
+                <li><strong>Lembrete:</strong> não invente <code>t</code> para proporção.</li>
+              </ul>
+            </section>
+          </div>
+        </article>
+
+        <article class="node node-chi" id="qui-quadrado" tabindex="0" role="button" aria-pressed="false">
+          <div class="node-header">
+            <span class="node-number">5</span>
+            <div>
+              <h2>Teste Qui-Quadrado</h2>
+              <p class="node-subtitle">Quando a questão cruza categorias em tabela.</p>
+            </div>
+          </div>
+
+          <ol class="steps-list">
+            <li>Monte a tabela com os valores <strong>observados</strong>.</li>
+            <li>Assuma <code>H₀</code>: as características são <strong>independentes</strong>.</li>
+            <li>Calcule o esperado por célula: <code>(Total da linha × Total da coluna) / Total geral</code>.</li>
+            <li>Some tudo em <code>Σ (O - E)² / E</code>.</li>
+            <li>Se o valor ficar alto, rejeite <code>H₀</code>: existe associação.</li>
+          </ol>
+        </article>
+
+        <article class="node node-cheats" id="interpretacao" tabindex="0" role="button" aria-pressed="false">
+          <div class="node-header">
+            <span class="node-number">6</span>
+            <div>
+              <h2>Dicas de Ouro</h2>
+              <p class="node-subtitle">As regras que mais salvam interpretação na prova.</p>
+            </div>
+          </div>
+
+          <ul class="warning-list">
+            <li><strong>Regra do zero:</strong> se o IC da diferença passa pelo zero, não há diferença estatística.</li>
+            <li><strong>Regra do um:</strong> se o IC da razão de variâncias passa pelo um, não há diferença entre variâncias.</li>
+            <li><strong>p-valor ≤ α:</strong> rejeite <code>H₀</code>. Lembrete mental: p pequeno, <code>H₀</code> pro veneno.</li>
+            <li><strong>p-valor &gt; α?</strong> Não rejeite <code>H₀</code>.</li>
+            <li><strong>Nunca escreva:</strong> “aceitamos <code>H₀</code>”.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="exam-grid" aria-label="Blocos extras de revisão">
+        <article class="exam-card">
+          <h2>Fluxo Relâmpago para Médias</h2>
+          <ol class="steps-list">
+            <li>É média de dois grupos?</li>
+            <li>Os grupos são independentes ou pareados?</li>
+            <li>Se forem independentes: a variância populacional é conhecida?</li>
+            <li>Conhecida → <code>Z</code>. Desconhecida → <code>t</code>.</li>
+            <li>Se forem pareados: transforme tudo em diferenças <code>d</code>.</li>
+          </ol>
+        </article>
+
+        <article class="exam-card exam-card-quote">
+          <h2>Frases Prontas para a Prova</h2>
+          <ul class="quote-list">
+            <li>“Como o intervalo contém zero, não há evidência de diferença estatística.”</li>
+            <li>“Como o p-valor é menor que α, rejeitamos <code>H₀</code>.”</li>
+            <li>“Não rejeitamos <code>H₀</code>; isso não significa aceitá-la.”</li>
+            <li>“Os dados sugerem associação entre as categorias analisadas.”</li>
+          </ul>
+        </article>
+
+        <article class="exam-card">
+          <h2>Armadilhas Clássicas</h2>
+          <ul class="clean-list">
+            <li>Trocar <strong>média</strong> por <strong>proporção</strong> e escolher a distribuição errada.</li>
+            <li>Esquecer que <strong>pareado</strong> vira uma única amostra de diferenças.</li>
+            <li>Achar que “não rejeitar” é o mesmo que “aceitar”.</li>
+            <li>Olhar a conta e esquecer a <strong>interpretação final</strong>.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

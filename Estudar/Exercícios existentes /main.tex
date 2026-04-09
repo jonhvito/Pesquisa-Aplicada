@@ -1,0 +1,1303 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{setspace}
+\setstretch{1.1}
+
+\pagestyle{plain}
+
+\begin{document}
+
+\begin{center}
+{\Large Universidade Federal da Paraíba}\\[6pt]
+{\large Bacharelado em Estatística}\\[6pt]
+{\large Pesquisa Aplicada à Estatística -- Lista Completa de Exercícios}\\[12pt]
+{\large Duas Populações e Testes Especiais}\\[10pt]
+\end{center}
+
+\vspace{20pt}
+\noindent\textbf{Aluno:} \hrulefill \hfill \textbf{Matrícula:} \hrulefill
+\vspace{16pt}
+
+% ═══════════════════════════════════════════════
+\section*{Questão 1}
+\textit{(Retirado de: "Lista Atividade 2 - Intervalo de Confiança para duas populações", Exercício número 1)}
+
+Uma fábrica deseja comparar a durabilidade (em horas) de dois tipos de lâmpadas. Sabe-se, por especificações técnicas, que os desvios padrão populacionais são $\sigma_A = 50$ h (tipo A) e $\sigma_B = 60$ h (tipo B). Foram testadas amostras aleatórias de 40 lâmpadas do tipo A e 35 do tipo B, obtendo-se médias amostrais $\bar{x}_A = 1200$ h e $\bar{x}_B = 1180$ h.
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+$\sigma_A = 50$, $\sigma_B = 60$, $n_A = 40$, $n_B = 35$, $\bar{x}_A = 1200$, $\bar{x}_B = 1180$, $1 - \alpha = 0,95$.
+
+\medskip\noindent\textbf{(a)} Construa um intervalo de confiança de 95\% para a diferença entre as durabilidades médias populacionais $\mu_A - \mu_B$.\\
+\noindent \textbf{1. Valor Crítico:} Como os desvios padrão populacionais são conhecidos, usamos a distribuição Normal Padrão ($Z$).
+\begin{align*}
+Z_{\alpha/2} &= \boxed{1,96}
+\end{align*}
+
+\noindent \textbf{2. Diferença Pontual:}
+\begin{align*}
+\bar{x}_A - \bar{x}_B &= 1200 - 1180 = \boxed{20}
+\end{align*}
+
+\noindent \textbf{3. Erro Padrão (EP):}
+\begin{align*}
+EP &= \sqrt{\frac{\sigma_A^2}{n_A} + \frac{\sigma_B^2}{n_B}} = \sqrt{\frac{50^2}{40} + \frac{60^2}{35}} = \sqrt{62,5 + 102,8571} \approx \boxed{12,859}
+\end{align*}
+
+\noindent \textbf{4. Margem de Erro (E):}
+\begin{align*}
+E &= Z_{\alpha/2} \times EP = 1,96 \times 12,859 \approx \boxed{25,20}
+\end{align*}
+
+\noindent \textbf{5. Construção e Interpretação:}
+\begin{align*}
+IC(\mu_A - \mu_B; 95\%) &= [20 - 25,20 \,;\, 20 + 25,20] = \boxed{[-5,20 \,;\, 45,20]}
+\end{align*}
+
+\medskip\noindent\textbf{(b)} Interprete o resultado obtido. É possível afirmar, com 95\% de confiança, que existe diferença significativa entre os dois tipos de lâmpadas?
+
+\noindent \textbf{Interpretação:} Estima-se, com 95\% de confiança, que a verdadeira diferença entre as durabilidades médias esteja no intervalo de -5,20 horas a 45,20 horas. Como o intervalo construído \textbf{contém o valor 0}, não existe evidência estatística de diferença significativa entre as lâmpadas A e B.
+
+\medskip\noindent\textbf{(c)} Se o nível de confiança fosse aumentado para 99\%, o que aconteceria com a amplitude do intervalo? (Justifique sem recalcular.)
+
+\noindent Aumentando o nível de confiança para 99\%, o multiplicador crítico da distribuição normal ($Z_{\alpha/2}$) aumentará (de 1,96 para 2,576). Na fórmula $\text{Margem de Erro } E = Z_{\alpha/2} \times EP$, isso provoca um aumento direto de $E$, resultando em um \textbf{\boxed{\text{aumento da amplitude}}} do intervalo de confiança. Maior grau de certeza exige intervalos mais largos.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 2}
+\textit{(Retirado de: "Lista Atividade 2 - Intervalo de Confiança para duas populações", Exercício número 2)}
+
+Um pesquisador quer avaliar o efeito de um novo método de ensino em matemática. Dois grupos independentes de alunos foram formados: 12 alunos no método tradicional (grupo 1) e 10 alunos no novo método (grupo 2). As notas em um teste padronizado apresentaram:
+$\bar{x}_1 = 72$, $s_1 = 8$, $\bar{x}_2 = 78$, $s_2 = 7$.
+Supondo que as variâncias populacionais sejam iguais e que as notas sigam distribuição normal:
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+$n_1 = 12$, $\bar{x}_1 = 72$, $s_1 = 8$, $n_2 = 10$, $\bar{x}_2 = 78$, $s_2 = 7$, $1-\alpha = 0,95$, com $\sigma_1^2 = \sigma_2^2$.
+
+\medskip\noindent\textbf{(a)} Calcule a variância combinada $S^2_p$.
+
+\noindent Como as variâncias populacionais são assumidas iguais, calculamos a variância combinada ponderando as variâncias amostrais pelos respectivos graus de liberdade:
+\begin{align*}
+S^2_p &= \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2} \\
+S^2_p &= \frac{(12 - 1)8^2 + (10 - 1)7^2}{12 + 10 - 2} \\
+S^2_p &= \frac{11 \times 64 + 9 \times 49}{20} \\
+S^2_p &= \frac{704 + 441}{20} = \frac{1145}{20} = \boxed{57,25}
+\end{align*}
+
+\medskip\noindent\textbf{(b)} Construa um intervalo de confiança de 95\% para a diferença $\mu_2 - \mu_1$.
+
+\noindent \textbf{1. Valor Crítico:} Como as variâncias populacionais são desconhecidas mas iguais, usamos a distribuição t de Student com $gl = n_1 + n_2 - 2 = 20$. Para $1-\alpha = 0,95$, temos $\alpha/2 = 0,025$:
+\begin{align*}
+t_{\alpha/2} &= \boxed{2,086}
+\end{align*}
+
+\noindent \textbf{2. Diferença Pontual:} Prestando atenção na ordem requerida $\mu_2 - \mu_1$:
+\begin{align*}
+\bar{x}_2 - \bar{x}_1 &= 78 - 72 = \boxed{6}
+\end{align*}
+
+\noindent \textbf{3. Erro Padrão (EP):}
+\begin{align*}
+EP &= \sqrt{S^2_p \left( \frac{1}{n_1} + \frac{1}{n_2} \right)} \\
+EP &= \sqrt{57,25 \left( \frac{1}{12} + \frac{1}{10} \right)} = \sqrt{57,25 \left( \frac{11}{60} \right)} = \sqrt{10,4958} \approx \boxed{3,240}
+\end{align*}
+
+\noindent \textbf{4. Margem de Erro (E):}
+\begin{align*}
+E &= t_{\alpha/2} \times EP = 2,086 \times 3,240 \approx \boxed{6,758}
+\end{align*}
+
+\noindent \textbf{5. Construção e Interpretação:}
+\begin{align*}
+IC(\mu_2 - \mu_1; 95\%) &= [6 - 6,758 \,;\, 6 + 6,758] = \boxed{[-0,758 \,;\, 12,758]}
+\end{align*}
+
+\medskip\noindent\textbf{(c)} Com base no intervalo, é possível concluir que o novo método é mais eficaz? Justifique.
+
+\noindent \textbf{Interpretação:} Como o intervalo de confiança $[-0,758 \,;\, 12,758]$ \textbf{contém o valor 0}, não há evidências estatísticas para afirmar, com 95\% de confiança, que $\mu_2 > \mu_1$. Portanto, não se pode concluir estatisticamente que o novo método é mais eficaz do que o método tradicional.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 3}
+\textit{(Retirado de: "Lista Atividade 2 - Intervalo de Confiança para duas populações", Exercício número 3)}
+
+Um estudo comparou o tempo de reação (em ms) de dois grupos de motoristas: um grupo que dormiu 6 horas (grupo 1, $n_1 = 15$) e outro que dormiu 8 horas (grupo 2, $n_2 = 12$). Os dados resumidos são:
+$\bar{x}_1 = 320$, $s_1 = 25$, $\bar{x}_2 = 300$, $s_2 = 18$.
+Admita que as populações são normais.
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+$n_1 = 15$, $\bar{x}_1 = 320$, $s_1 = 25$ \\
+$n_2 = 12$, $\bar{x}_2 = 300$, $s_2 = 18$ \\
+$1-\alpha = 0,95$, variâncias populacionais desconhecidas e assumidas diferentes devido ao item (b).
+
+\medskip\noindent\textbf{(a)} Construa um intervalo de confiança de 95\% para $\mu_1 - \mu_2$ e Interprete o resultado.
+
+\noindent \textbf{1. Valor Crítico:} Utilizamos a aproximação de Welch para corrigir os graus de liberdade ($\nu$), pois tratamos do problema de Behrens-Fisher (variâncias diferentes):
+\begin{align*}
+\nu &= \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{(s_1^2/n_1)^2}{n_1-1} + \frac{(s_2^2/n_2)^2}{n_2-1}} = \frac{\left(\frac{625}{15} + \frac{324}{12}\right)^2}{\frac{(625/15)^2}{14} + \frac{(324/12)^2}{11}} \\
+\nu &= \frac{(41,667 + 27)^2}{\frac{1736,111}{14} + \frac{729}{11}} = \frac{4715,111}{124,008 + 66,273} = \frac{4715,111}{190,281} \approx 24,78
+\end{align*}
+Arredondando $\nu$ conservadoramente para $\nu = 24$. Usando a distribuição t de Student para $gl=24$ e $\alpha/2 = 0,025$:
+\begin{align*}
+t_{\alpha/2} &= \boxed{2,064}
+\end{align*}
+
+\noindent \textbf{2. Diferença Pontual:}
+\begin{align*}
+\bar{x}_1 - \bar{x}_2 &= 320 - 300 = \boxed{20}
+\end{align*}
+
+\noindent \textbf{3. Erro Padrão (EP):}
+\begin{align*}
+EP &= \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}} = \sqrt{\frac{625}{15} + \frac{324}{12}} = \sqrt{41,667 + 27} = \sqrt{68,667} \approx \boxed{8,287}
+\end{align*}
+
+\noindent \textbf{4. Margem de Erro (E):}
+\begin{align*}
+E &= t_{\alpha/2} \times EP = 2,064 \times 8,287 \approx \boxed{17,104}
+\end{align*}
+
+\noindent \textbf{5. Construção e Interpretação:}
+\begin{align*}
+IC(\mu_1 - \mu_2; 95\%) &= [20 - 17,104 \,;\, 20 + 17,104] = \boxed{[2,896 \,;\, 37,104]}
+\end{align*}
+
+\noindent \textbf{Interpretação:} O intervalo de confiança \textbf{não contém o valor 0} (ambos os limites são positivos). Assim, estipula-se com 95\% de confiança que a média temporal de reação do grupo 1 (dormiu 6h) é estatisticamente e significativamente maior do que a do grupo 2 (dormiu 8h).
+
+\medskip\noindent\textbf{(b)} Pesquise na internet porque a aproximação utilizada para cálculo dos graus de liberdades é necessária.
+
+\noindent A aproximação de Welch-Satterthwaite é necessária quando os desvios padrão populacionais são \textbf{desconhecidos e não podem ser considerados iguais} (falta de homocedasticidade). Sob estas condições, não se pode agrupar e calcular uma única variância combinada ($S^2_p$), resultando no problema de Behrens-Fisher, onde a diferença observada não segue uma t de Student perfeitamente padronizada. A fórmula aproxima graus de liberdade equivalentes baseados nas proporções e pesos de cada variância amostral, achatando artificialmente a distribuição (graus com finais não inteiros abaixados de forma conservadora). Seu uso garante que o intervalo final alcance, independentemente do erro, a respectiva margem técnica de confiança especificada, protegendo as inferências contra conclusões falsas caso as dispersões sejam heterogêneas e severamente divergentes.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 4}
+\textit{(Retirado de: "Lista Atividade 2 - Intervalo de Confiança para duas populações", Exercício número 4)}
+
+Um nutricionista aplicou uma dieta a 10 pacientes e mediu seus pesos (kg) antes e depois do programa. Os dados são:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcccccccccc}
+\toprule
+\textbf{Paciente} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\ \midrule
+Antes & 85 & 92 & 78 & 88 & 95 & 82 & 90 & 79 & 84 & 91 \\
+Depois & 82 & 88 & 75 & 84 & 91 & 78 & 86 & 76 & 81 & 87 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+$d_i = \text{Depois} - \text{Antes}$, $n = 10 \text{ pares amostrais}$, $1-\alpha = 0,95$.
+
+\medskip\noindent\textbf{(a)} Calcule as diferenças $d_i = \text{Depois} - \text{Antes}$ e obtenha a média $\bar{d}$ e o desvio padrão $s_d$ dessas diferenças.
+
+\noindent As diferenças par a par ($d_i$) para os $10$ pacientes são:
+\begin{align*}
+d_1 &= 82 - 85 = -3 & d_6 &= 78 - 82 = -4 \\
+d_2 &= 88 - 92 = -4 & d_7 &= 86 - 90 = -4 \\
+d_3 &= 75 - 78 = -3 & d_8 &= 76 - 79 = -3 \\
+d_4 &= 84 - 88 = -4 & d_9 &= 81 - 84 = -3 \\
+d_5 &= 91 - 95 = -4 & d_{10} &= 87 - 91 = -4
+\end{align*}
+
+\noindent A soma das diferenças é $\sum d_i = -36$. Onde a média das diferenças ($\bar{d}$) é:
+\begin{align*}
+\bar{d} &= \frac{\sum d_i}{n} = \frac{-36}{10} = \boxed{-3,6}
+\end{align*}
+
+\noindent A soma do quadrado das diferenças é $\sum d_i^2 = 4 \times (-3)^2 + 6 \times (-4)^2 = 36 + 96 = 132$. A variância amostral $s_d^2$ e o desvio padrão $s_d$ são:
+\begin{align*}
+s_d^2 &= \frac{\sum d_i^2 - \frac{(\sum d_i)^2}{n}}{n-1} = \frac{132 - \frac{1296}{10}}{9} = \frac{132 - 129,6}{9} = \frac{2,4}{9} \approx 0,2667 \\
+s_d &= \sqrt{s_d^2} = \sqrt{\frac{2,4}{9}} \approx \boxed{0,5164}
+\end{align*}
+
+\medskip\noindent\textbf{(b)} Construa um intervalo de confiança de 95\% para a verdadeira redução média de peso $\mu_d$.
+
+\noindent \textbf{1. Valor Crítico:} Como analisamos os desvios amostrais para os pares ligados e o grau de precisão global é oculto, usamos a distribuição t de Student. Os graus de liberdade são $gl = n - 1 = 9$. Para $1-\alpha = 0,95$, temos $\alpha/2 = 0,025$:
+\begin{align*}
+t_{\alpha/2} &= \boxed{2,262}
+\end{align*}
+
+\noindent \textbf{2. Diferença Pontual:} Previamente calculada na alínea anterior: $\bar{d} = -3,6$.
+
+\noindent \textbf{3. Erro Padrão (EP):}
+\begin{align*}
+EP &= \frac{s_d}{\sqrt{n}} = \frac{0,5164}{\sqrt{10}} = \frac{0,5164}{3,1622} \approx \boxed{0,1633}
+\end{align*}
+
+\noindent \textbf{4. Margem de Erro (E):}
+\begin{align*}
+E &= t_{\alpha/2} \times EP = 2,262 \times 0,1633 \approx \boxed{0,3694}
+\end{align*}
+
+\noindent \textbf{5. Construção e Interpretação:}
+\begin{align*}
+IC(\mu_d; 95\%) &= [\bar{d} - E \,;\, \bar{d} + E] = [-3,6 - 0,3694 \,;\, -3,6 + 0,3694] \\
+IC(\mu_d; 95\%) &= \boxed{[-3,9694 \,;\, -3,2306]}
+\end{align*}
+
+\medskip\noindent\textbf{(c)} Qual suposição é necessária para a validade desse intervalo? Com base no intervalo, é possível afirmar que a dieta reduz o peso?
+
+\noindent A suposição necessária para amostras ligadas pequenas ($n = 10 < 30$) é que a verdadeira população associada às diferenças $d_i$ venha de uma \textbf{distribuição Normal}.
+
+\noindent Sobre o intervalo de confiança construído $[-3,9694 \,;\, -3,2306]$, ele \textbf{não engloba o valor 0} e localiza-se estritamente na faixa negativa, reforçando a natureza da métrica adotada ($\text{Depois} - \text{Antes} < 0$). \textbf{Sim}, pode-se afirmar estatisticamente com 95\% de confiança que a dieta contribuiu para a redução efetiva dos pesos dos pacientes (entre $3,2$ kg e $3,9$ kg em média de emagrecimento).
+
+% ═══════════════════════════════════════════════
+\section*{Questão 5}
+\textit{(Retirado de: "Lista Atividade 2 - Intervalo de Confiança para duas populações", Exercício número 5)}
+
+Uma pesquisa de mercado quer comparar a proporção de consumidores que preferem a marca A em duas regiões. Na região Norte, de 250 entrevistados, 150 preferem a marca A; na região Sul, de 200 entrevistados, 100 preferem a marca A.
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+Região Norte: $n_N = 250$, sucesso $x_N = 150 \implies \hat{p}_N = \frac{150}{250} = 0,60$. \\
+Região Sul: $n_S = 200$, sucesso $x_S = 100 \implies \hat{p}_S = \frac{100}{200} = 0,50$. \\
+Nível de confiança $1-\alpha = 0,95$.
+
+\medskip\noindent\textbf{(a)} Verifique se as condições para o uso da aproximação normal estão satisfeitas.
+
+\noindent Para o uso da aproximação normal, é necessário que o número de sucessos e falhas observadas em ambas as amostras seja maior ou igual a 5. Validando:
+\begin{align*}
+n_N\hat{p}_N = 150 \ge 5 & \quad \text{e} \quad n_N(1-\hat{p}_N) = 100 \ge 5 \\
+n_S\hat{p}_S = 100 \ge 5 & \quad \text{e} \quad n_S(1-\hat{p}_S) = 100 \ge 5
+\end{align*}
+Como todas as contagens são substancialmente maiores que 5, \textbf{as condições estão plenamente satisfeitas}.
+
+\medskip\noindent\textbf{(b)} Construa um intervalo de confiança de 95\% para a diferença entre as proporções populacionais $p_N - p_S$.
+
+\noindent \textbf{1. Valor Crítico:} Utilizamos a distribuição Normal Padrão (Z) para amostras grandes em proporções. Para $1-\alpha = 0,95$, temos $\alpha/2 = 0,025$:
+\begin{align*}
+Z_{\alpha/2} &= \boxed{1,96}
+\end{align*}
+
+\noindent \textbf{2. Diferença Pontual:}
+\begin{align*}
+\hat{p}_N - \hat{p}_S &= 0,60 - 0,50 = \boxed{0,10}
+\end{align*}
+
+\noindent \textbf{3. Erro Padrão (EP):}
+\begin{align*}
+EP &= \sqrt{\frac{\hat{p}_N(1-\hat{p}_N)}{n_N} + \frac{\hat{p}_S(1-\hat{p}_S)}{n_S}} \\
+EP &= \sqrt{\frac{0,60 \times 0,40}{250} + \frac{0,50 \times 0,50}{200}} = \sqrt{\frac{0,24}{250} + \frac{0,25}{200}} \\
+EP &= \sqrt{0,00096 + 0,00125} = \sqrt{0,00221} \approx \boxed{0,0470}
+\end{align*}
+
+\noindent \textbf{4. Margem de Erro (E):}
+\begin{align*}
+E &= Z_{\alpha/2} \times EP = 1,96 \times 0,0470 \approx \boxed{0,0921}
+\end{align*}
+
+\noindent \textbf{5. Construção e Interpretação:}
+\begin{align*}
+IC(p_N - p_S; 95\%) &= [0,10 - 0,0921 \,;\, 0,10 + 0,0921] = \boxed{[0,0079 \,;\, 0,1921]}
+\end{align*}
+
+
+\medskip\noindent\textbf{(c)} Interprete o intervalo. Há evidência de diferença entre as regiões?
+
+\noindent \textbf{Interpretação:} O intervalo de 95\% obtido é $[0,0079 \,;\, 0,1921]$. Como o intervalo construído \textbf{não contém o valor 0} e situa-se inteiramente na porção de valores reais positivos, temos evidência estatística de diferença significativa entre as duas proporções. Conclui-se, de forma direta, que a proporção populacional de preferência à marca A na Região Norte é maior do que na Região Sul.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 6}
+\textit{(Retirado de: "Lista Atividade 2 - Intervalo de Confiança para duas populações", Exercício número 6)}
+
+Um laboratório testa a precisão de duas balanças. Para isso, pesa-se 15 vezes um mesmo objeto na balança 1 e 12 vezes na balança 2. As variâncias amostrais obtidas foram $s^2_1 = 0{,}45 \text{ g}^2$ e $s^2_2 = 0{,}32 \text{ g}^2$. Suponha que as medições sigam distribuição normal.
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+Balança 1: $n_1 = 15 \implies gl_1 = 14$, $s^2_1 = 0,45$. \\
+Balança 2: $n_2 = 12 \implies gl_2 = 11$, $s^2_2 = 0,32$. \\
+Nível de confiança $1-\alpha = 0,90 \implies \alpha = 0,10$.
+
+\medskip\noindent\textbf{(a)} Construa um intervalo de confiança de 90\% para a razão das variâncias $\sigma^2_1 / \sigma^2_2$.
+
+\noindent \textbf{1. Valores Críticos:} A razão entre variâncias amostrais independentes de populações normais tem distribuição F de Snedecor de $F(gl_1, gl_2)$. Buscamos os valores críticos que acumulam a proporção $\alpha/2 = 0,05$ nas caudas (sendo que o limite inferior dependerá da inversão dos graus de liberdade):
+\begin{align*}
+F_{\text{sup}} &= F_{0,05}(gl_1, gl_2) = F_{0,05}(14, 11) \approx 2,63 \\
+F_{\text{inf}} &= F_{0,05}(gl_2, gl_1) = F_{0,05}(11, 14) \approx 2,56
+\end{align*}
+
+\noindent \textbf{2. Razão Pontual:}
+\begin{align*}
+\frac{s^2_1}{s^2_2} &= \frac{0,45}{0,32} = \boxed{1,40625}
+\end{align*}
+
+\noindent \textbf{3. Construção do IC:}
+A fórmula teórica do intervalo de confiança para razão de variâncias inversamente aplica as tabelas dos fatores críticos ($F$):
+\begin{align*}
+IC\left(\frac{\sigma_1^2}{\sigma_2^2}; \, 90\%\right) &= \left[ \frac{s^2_1}{s^2_2} \times \frac{1}{F_{0,05}(14, 11)} \,\,;\,\, \frac{s^2_1}{s^2_2} \times F_{0,05}(11, 14) \right] \\
+IC\left(\frac{\sigma_1^2}{\sigma_2^2}; \, 90\%\right) &= \left[ 1,40625 \times \frac{1}{2,63} \,\,;\,\, 1,40625 \times 2,56 \right] \\
+IC\left(\frac{\sigma_1^2}{\sigma_2^2}; \, 90\%\right) &= \left[ \frac{1,40625}{2,63} \,\,;\,\, 3,60 \right] \approx \boxed{[0,5347 \,;\, 3,6000]}
+\end{align*}
+
+\medskip\noindent\textbf{(b)} Com base no intervalo, é possível afirmar que as balanças têm precisões diferentes (isto é, variâncias diferentes)?
+
+\noindent \textbf{Interpretação:} O intervalo de confiança obtido é $[0,5347 \,;\, 3,6000]$. Como o intervalo \textbf{contém o valor 1} (que corresponde à igualdade das variâncias, $\sigma_1^2 = \sigma_2^2$), não há evidência estatística suficiente, a 90\% de confiança, para afirmar que as balanças possuem precisões diferentes.
+
+\medskip\noindent\textbf{(c)} Que suposição é fundamental para a validade desse intervalo?
+
+\noindent A suposição fundamental é que as medições de ambas as balanças seguem distribuições \textbf{Normais} e são independentes entre si. Sem essa suposição, a razão entre as variâncias amostrais não segue a distribuição F de Snedecor, invalidando a construção do intervalo.
+
+
+% ═══════════════════════════════════════════════
+\section*{Questão 7}
+\textit{(Retirado de: "Lista Atividade 2 - Intervalo de Confiança para duas populações", Exercício número 7)}
+
+Um Estatístico deseja estimar a variabilidade do diâmetro de peças produzidas por uma máquina. Ele coleta uma amostra de 20 peças e obtém uma variância amostral de $0{,}0025 \text{ mm}^2$. Suponha que os diâmetros sigam distribuição normal.
+
+\vspace{0.3cm}
+\noindent\textbf{Extração de Dados:} \\
+$n = 20 \implies gl = 19$, $S^2 = 0{,}0025$, $1 - \alpha = 0{,}95 \implies \alpha = 0{,}05$.
+
+\medskip\noindent\textbf{(a)} Construa um intervalo de confiança de 95\% para a variância populacional $\sigma^2$.
+
+\noindent \textbf{1. Valores Críticos:} Como a população é normal, utilizamos a distribuição Qui-Quadrado ($\chi^2$) com $gl = n - 1 = 19$. Para $1 - \alpha = 0{,}95$, buscamos os valores nas caudas conjuntas $\alpha/2 = 0{,}025$ e $1 - \alpha/2 = 0{,}975$:
+\begin{align*}
+\chi^2_{0{,}975; \, 19} &= \boxed{8{,}907} \\
+\chi^2_{0{,}025; \, 19} &= \boxed{32{,}852}
+\end{align*}
+\noindent \textbf{2. Construção do IC:}
+\begin{align*}
+IC(\sigma^2; 95\%) &= \left[ \frac{(n-1)S^2}{\chi^2_{0{,}025}} \,;\, \frac{(n-1)S^2}{\chi^2_{0{,}975}} \right] \\
+IC(\sigma^2; 95\%) &= \left[ \frac{(20-1) \times 0{,}0025}{32{,}852} \,;\, \frac{(20-1) \times 0{,}0025}{8{,}907} \right] \\
+IC(\sigma^2; 95\%) &= \left[ \frac{0{,}0475}{32{,}852} \,;\, \frac{0{,}0475}{8{,}907} \right] \approx \boxed{[0{,}00145 \,;\, 0{,}00533]}
+\end{align*}
+
+\medskip\noindent\textbf{(b)} Obtenha o intervalo de confiança para o desvio padrão populacional $\sigma$.
+
+\noindent \textbf{1. Construção do IC:} Como o desvio padrão é a raiz quadrada positiva da variância, basta extrair a raiz dos limites obtidos em (a):
+\begin{align*}
+IC(\sigma; 95\%) &= \left[ \sqrt{0{,}00145} \,;\, \sqrt{0{,}00533} \right] \approx \boxed{[0{,}0380 \,;\, 0{,}0730]}
+\end{align*}
+
+\medskip\noindent\textbf{(c)} Interprete os resultados.
+
+\noindent \textbf{Interpretação:} Estima-se, com 95\% de confiança, que a verdadeira variância populacional dos diâmetros produzidos pela máquina esteja entre $0{,}00145 \text{ mm}^2$ e $0{,}00533 \text{ mm}^2$. Consequentemente, o desvio padrão populacional está estimado entre $0{,}0380 \text{ mm}$ e $0{,}0730 \text{ mm}$.
+% ═══════════════════════════════════════════════
+\section*{Questão 8}
+\textit{(Retirado de: "Lista Atividade 2 - Intervalo de Confiança para duas populações", Exercício número 8)}
+
+Responda de forma justificada:
+
+\medskip\noindent\textbf{(a)} Qual a principal diferença entre o intervalo de confiança para a diferença de médias quando as variâncias populacionais são conhecidas e quando são desconhecidas, mas iguais?
+
+\noindent A principal diferença está na distribuição utilizada para obter o valor crítico e na forma do erro padrão. Quando as variâncias populacionais são \textbf{conhecidas} ($\sigma^2_1, \sigma^2_2$), utiliza-se a distribuição Normal Padrão ($Z$) e o erro padrão é calculado diretamente com os valores populacionais. Quando as variâncias são \textbf{desconhecidas, mas assumidas iguais}, utiliza-se a distribuição $t$ de Student, e as variâncias amostrais são combinadas em uma estimativa única ($S^2_p$), com graus de liberdade $gl = n_1 + n_2 - 2$.
+
+\medskip\noindent\textbf{(b)} Por que, no caso de amostras pareadas, a análise é feita sobre as diferenças em vez das observações originais?
+
+\noindent Em amostras pareadas, as duas medições são realizadas sobre o mesmo sujeito ou unidade experimental (e.g., antes e depois de um tratamento). Tratar essas observações como independentes ignoraria a correlação natural entre elas, inflando artificialmente a variabilidade estimada. Ao calcular as diferenças individuais $d_i = X_{\text{depois},i} - X_{\text{antes},i}$, essa correlação é eliminada e o problema reduz-se à inferência sobre uma única média populacional $\mu_d$, tornando a análise mais precisa e conceitualmente correta.
+
+\medskip\noindent\textbf{(c)} O que significa, na prática, um intervalo de confiança para a razão de variâncias conter o valor 1?
+
+\noindent O valor 1 representa a igualdade entre as variâncias populacionais, pois $\frac{\sigma^2_1}{\sigma^2_2} = 1 \implies \sigma^2_1 = \sigma^2_2$. Quando o intervalo de confiança construído pela distribuição $F$ contém o valor 1 (e.g., $[0{,}8 \,;\, 1{,}4]$), não há evidência estatística suficiente para rejeitar a hipótese de igualdade das variâncias ($H_0: \sigma^2_1 = \sigma^2_2$). Na prática, isso indica que as duas populações podem ser consideradas homocedásticas, o que justifica, por exemplo, o uso da variância combinada $S^2_p$ na comparação de médias.
+
+
+% ═══════════════════════════════════════════════
+\section*{Questão 9}
+\textit{(Retirado de: Slide "Aula 7.1 - Intervalo de confiança para duas populações", Exercício 1 - pág. 122)}
+
+Um estudo deseja comparar o desempenho de alunos submetidos a dois métodos de ensino:
+Método A (tradicional): 15 alunos.
+Método B (inovador): 12 alunos.
+A variável resposta é a nota em um teste padronizado (0 a 100). Os dados resumidos são:
+Método A: $n_A = 15$, $\bar{x}_A = 72{,}0$, $s^2_A = 25{,}0$
+Método B: $n_B = 12$, $\bar{x}_B = 78{,}0$, $s^2_B = 30{,}0$
+
+\medskip\noindent Supondo populações normais e que as variâncias populacionais sejam iguais, construa um intervalo de confiança de 95\% para a diferença entre as médias populacionais $(\mu_B - \mu_A)$. Interprete o resultado.
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:} \\
+\textbf{Extração de Dados:} \\
+$n_A = 15$, $\bar{x}_A = 72{,}0$, $S^2_A = 25{,}0$. \\
+$n_B = 12$, $\bar{x}_B = 78{,}0$, $S^2_B = 30{,}0$. \\
+$\sigma^2_A = \sigma^2_B$ (desconhecidas), $1-\alpha = 0{,}95 \implies \alpha = 0{,}05$.
+
+\noindent \textbf{1. Variância Combinada ($S^2_p$):}
+Como assumimos igualdade das variâncias populacionais, combinamos as variâncias amostrais:
+\begin{align*}
+S^2_p &= \frac{(n_A - 1)S^2_A + (n_B - 1)S^2_B}{n_A + n_B - 2} \\
+S^2_p &= \frac{(15 - 1)25{,}0 + (12 - 1)30{,}0}{15 + 12 - 2} = \frac{14 \times 25 + 11 \times 30}{25} \\
+S^2_p &= \frac{350 + 330}{25} = \frac{680}{25} = \boxed{27{,}2}
+\end{align*}
+
+\noindent \textbf{2. Valor Crítico:}
+Utilizamos a distribuição $t$ de Student com $gl = n_A + n_B - 2 = 25$. Para $95\%$ de confiança ($\alpha/2 = 0{,}025$):
+\begin{align*}
+t_{0{,}025; \, 25} &= \boxed{2{,}060}
+\end{align*}
+
+\noindent \textbf{3. Diferença Pontual:}
+\begin{align*}
+\bar{x}_B - \bar{x}_A &= 78{,}0 - 72{,}0 = \boxed{6{,}0}
+\end{align*}
+
+\noindent \textbf{4. Erro Padrão (EP):}
+\begin{align*}
+EP &= \sqrt{S^2_p \left( \frac{1}{n_B} + \frac{1}{n_A} \right)} \\
+EP &= \sqrt{27{,}2 \left( \frac{1}{12} + \frac{1}{15} \right)} = \sqrt{27{,}2 \left( \frac{9}{60} \right)} = \sqrt{27{,}2 \times 0{,}15} = \sqrt{4{,}08} \approx \boxed{2{,}020}
+\end{align*}
+
+\noindent \textbf{5. Margem de Erro (E):}
+\begin{align*}
+E &= t_{\alpha/2} \times EP = 2{,}060 \times 2{,}020 \approx \boxed{4{,}161}
+\end{align*}
+
+\noindent \textbf{6. Construção e Interpretação:}
+\begin{align*}
+IC(\mu_B - \mu_A; 95\%) &= [6{,}0 - 4{,}161 \,;\, 6{,}0 + 4{,}161] = \boxed{[1{,}839 \,;\, 10{,}161]}
+\end{align*}
+
+\noindent \textbf{Interpretação:} Estima-se, com 95\% de confiança, que a verdadeira diferença entre as médias populacionais $\mu_B - \mu_A$ esteja entre $1{,}839$ e $10{,}161$ pontos. O intervalo \textbf{não contém o valor 0} e abriga apenas valores positivos, logo, conclui-se que existe diferença estatisticamente significativa e que o Método B gera médias superiores às do Método A.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 10}
+\textit{(Retirado de: Slide "Aula 7.1 - Intervalo de confiança para duas populações", Exercício 2 - pág. 123)}
+
+Um programa de bem-estar avaliou o nível de estresse (escala de 0 a 50) de 10 funcionários antes e depois de um curso de mindfulness. As diferenças individuais (depois - antes) foram:
+$d_i$: $-5, -3, -4, -6, -2, -3, -5, -4, -3, -4$
+(valores negativos indicam redução do estresse).
+
+\medskip\noindent Construa um intervalo de confiança de 95\% para a verdadeira redução média do estresse $(\mu_d)$ proporcionada pelo programa. Interprete o resultado, verificando se o intervalo contém o valor 0. É necessário fazer alguma suposição?
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:} \\
+\textbf{Extração de Dados:} \\
+$d_i = \text{Depois} - \text{Antes}$. $n = 10 \text{ pares amostrais}$. \\
+$1-\alpha = 0{,}95 \implies \alpha = 0{,}05$.
+
+\noindent \textbf{1. Estatísticas das Diferenças:}
+\begin{align*}
+\bar{d} &= \frac{\sum d_i}{n} = \frac{-39}{10} = \boxed{-3{,}9} \\
+S^2_d &= \frac{\sum d_i^2 - \frac{(\sum d_i)^2}{n}}{n-1} = \frac{165 - \frac{(-39)^2}{10}}{9} = \frac{165 - 152{,}1}{9} = \frac{12{,}9}{9} \approx \boxed{1{,}4333} \\
+S_d &= \sqrt{1{,}4333} \approx \boxed{1{,}1972}
+\end{align*}
+
+\noindent \textbf{2. Valor Crítico:}
+Utilizamos a distribuição $t$ de Student para $gl = n - 1 = 9$. Para $95\%$ de confiança ($\alpha/2 = 0{,}025$):
+\begin{align*}
+t_{0{,}025; \, 9} &= \boxed{2{,}262}
+\end{align*}
+
+\noindent \textbf{3. Erro Padrão (EP):}
+\begin{align*}
+EP &= \frac{S_d}{\sqrt{n}} = \frac{1{,}1972}{\sqrt{10}} \approx \boxed{0{,}3786}
+\end{align*}
+
+\noindent \textbf{4. Margem de Erro (E):}
+\begin{align*}
+E &= t_{\alpha/2} \times EP = 2{,}262 \times 0{,}3786 \approx \boxed{0{,}8564}
+\end{align*}
+
+\noindent \textbf{5. Construção e Interpretação:}
+\begin{align*}
+IC(\mu_d; 95\%) &= [\bar{d} - E \,;\, \bar{d} + E] = [-3{,}9 - 0{,}8564 \,;\, -3{,}9 + 0{,}8564] \\
+IC(\mu_d; 95\%) &= \boxed{[-4{,}7564 \,;\, -3{,}0436]}
+\end{align*}
+
+\noindent \textbf{Interpretação e Suposições:} O intervalo construído \textbf{não contém o valor 0} e é estritamente negativo. Isso indica que houve uma redução estatisticamente significativa nos níveis de estresse ($d_i = \text{Depois} - \text{Antes} < 0$). Estima-se, com 95\% de confiança, que a redução média induzida pelo curso seja entre $3{,}04$ e $4{,}76$ pontos. \\
+Como a amostra tem tamanho $n=10$, a \textbf{suposição necessária} para a precisão matemática deste IC é assumir premissa de que a distribuição populacional das diferenças seja Normal.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 11}
+\textit{(Retirado de: Slide "Aula 7.1 - Intervalo de confiança para duas populações", Exercício 3 - pág. 124)}
+
+Uma montadora de veículos quer comparar o consumo de combustível (km/l) de dois modelos de carro. Por especificações técnicas do fabricante, as variâncias populacionais são conhecidas. Dados:
+Modelo A: $\sigma_A = 1{,}2$ km/l, $n_A = 35$, $\bar{x}_A = 12{,}8$ km/l
+Modelo B: $\sigma_B = 1{,}5$ km/l, $n_B = 30$, $\bar{x}_B = 11{,}9$ km/l
+Nível de confiança: 95\% ($\alpha = 0{,}05$)
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:} \\
+\textbf{Extração de Dados:} \\
+$n_A = 35$, $\bar{x}_A = 12{,}8$, $\sigma_A = 1{,}2$. \\
+$n_B = 30$, $\bar{x}_B = 11{,}9$, $\sigma_B = 1{,}5$. \\
+Variâncias populacionais \textbf{conhecidas}. $1-\alpha = 0{,}95 \implies \alpha = 0{,}05$.
+
+\medskip\noindent\textbf{(a)} Construa o intervalo de confiança para $\mu_A - \mu_B$.
+
+\noindent \textbf{1. Valor Crítico:}
+Como as variâncias populacionais são formalmente conhecidas, utilizamos estritamente a distribuição Normal Padrão ($Z$).
+\begin{align*}
+Z_{0{,}025} &= \boxed{1{,}96}
+\end{align*}
+
+\noindent \textbf{2. Diferença Pontual:}
+\begin{align*}
+\bar{x}_A - \bar{x}_B &= 12{,}8 - 11{,}9 = \boxed{0{,}9}
+\end{align*}
+
+\noindent \textbf{3. Erro Padrão (EP):}
+Utilizamos os desvios paramétricos reais:
+\begin{align*}
+EP &= \sqrt{\frac{\sigma_A^2}{n_A} + \frac{\sigma_B^2}{n_B}} = \sqrt{\frac{1{,}44}{35} + \frac{2{,}25}{30}} = \sqrt{0{,}04114 + 0{,}0750} \approx \sqrt{0{,}11614} \approx \boxed{0{,}3408}
+\end{align*}
+
+\noindent \textbf{4. Margem de Erro (E):}
+\begin{align*}
+E &= Z_{\alpha/2} \times EP = 1{,}96 \times 0{,}3408 \approx \boxed{0{,}6680}
+\end{align*}
+
+\noindent \textbf{5. Construção do IC:}
+\begin{align*}
+IC(\mu_A - \mu_B; 95\%) &= [0{,}9 - 0{,}6680 \,;\, 0{,}9 + 0{,}6680] = \boxed{[0{,}2320 \,;\, 1{,}5680]}
+\end{align*}
+
+\medskip\noindent\textbf{(b)} Interprete o resultado.
+
+\noindent \textbf{Interpretação:} Estima-se, com 95\% de confiança, que o modelo A consome em média entre $0{,}232$ km/l e $1{,}568$ km/l a mais de combustível na média em comparação ao modelo B.
+
+\medskip\noindent\textbf{(c)} É possível afirmar que os modelos têm consumos médios diferentes?
+
+\noindent \textbf{Conclusão:} \textbf{Sim}. Como o intervalo de confiança $[0{,}2320 \,;\, 1{,}5680]$ \textbf{não contém o valor 0} e situa-se integralmente no eixo positivo, há evidência estatística sólida de que existe diferença significativa no consumo e que o consumo médio real do Modelo A ($\mu_A$) é maior que o do Modelo B ($\mu_B$).
+
+% ═══════════════════════════════════════════════
+\section*{Questão 12}
+\textit{(Retirado de: Slide "Aula 7.1 - Intervalo de confiança para duas populações", Exercício 4 - pág. 125)}
+
+Um agrônomo quer comparar a produtividade (em toneladas por hectare) de duas variedades de soja cultivadas em diferentes regiões. Devido às características do solo, suspeita-se que as variabilidades sejam diferentes. Dados coletados após a colheita:
+Variedade A (transgênica): $n_1 = 9$ fazendas, $\bar{x}_1 = 4{,}2$ t/ha, $s_1 = 0{,}85$ t/ha
+Variedade B (convencional): $n_2 = 11$ fazendas, $\bar{x}_2 = 3{,}6$ t/ha, $s_2 = 0{,}42$ t/ha
+Como as amostras são pequenas ($n_1 = 9, n_2 = 11$), o agrônomo verificou a normalidade com gráficos e testes.
+
+\medskip\noindent Estime com 95\% de confiança um intervalo para a diferença das médias.
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:} \\
+\textbf{Extração de Dados:} \\
+$n_1 = 9$, $\bar{x}_1 = 4{,}2$, $S_1 = 0{,}85 \implies S_1^2 = 0{,}7225$. \\
+$n_2 = 11$, $\bar{x}_2 = 3{,}6$, $S_2 = 0{,}42 \implies S_2^2 = 0{,}1764$. \\
+Variâncias amostrais, populações com variâncias \textbf{desconhecidas e desiguais} (Behrens-Fisher). $1-\alpha = 0{,}95 \implies \alpha = 0{,}05$.
+
+\noindent \textbf{1. Valor Crítico (Aproximação de Welch):}
+Calculamos os graus de liberdade equivalentes ($\nu$):
+\begin{align*}
+\nu &= \frac{\left(\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}\right)^2}{\frac{(S_1^2/n_1)^2}{n_1-1} + \frac{(S_2^2/n_2)^2}{n_2-1}} = \frac{\left(\frac{0{,}7225}{9} + \frac{0{,}1764}{11}\right)^2}{\frac{(0{,}7225/9)^2}{8} + \frac{(0{,}1764/11)^2}{10}} \\
+\nu &= \frac{(0{,}08028 + 0{,}01604)^2}{\frac{(0{,}08028)^2}{8} + \frac{(0{,}01604)^2}{10}} = \frac{0{,}00928}{0{,}000806 + 0{,}000026} = \frac{0{,}00928}{0{,}000832} \approx 11{,}15
+\end{align*}
+Arredondando $\nu$ conservadoramente para $11$. Utilizando a distribuição $t$ com $gl=11$:
+\begin{align*}
+t_{0{,}025; \, 11} &= \boxed{2{,}201}
+\end{align*}
+
+\noindent \textbf{2. Diferença Pontual:}
+\begin{align*}
+\bar{x}_1 - \bar{x}_2 &= 4{,}2 - 3{,}6 = \boxed{0{,}6}
+\end{align*}
+
+\noindent \textbf{3. Erro Padrão (EP):}
+\begin{align*}
+EP &= \sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}} = \sqrt{0{,}08028 + 0{,}01604} = \sqrt{0{,}09632} \approx \boxed{0{,}3104}
+\end{align*}
+
+\noindent \textbf{4. Margem de Erro (E):}
+\begin{align*}
+E &= t_{\alpha/2} \times EP = 2{,}201 \times 0{,}3104 \approx \boxed{0{,}6832}
+\end{align*}
+
+\noindent \textbf{5. Construção e Interpretação:}
+\begin{align*}
+IC(\mu_1 - \mu_2; 95\%) &= [0{,}6 - 0{,}6832 \,;\, 0{,}6 + 0{,}6832] = \boxed{[-0{,}0832 \,;\, 1{,}2832]}
+\end{align*}
+
+\noindent \textbf{Interpretação:} Estima-se, com 95\% de confiança, que a verdadeira diferença média na produtividade ($\mu_1 - \mu_2$) varie de $-0{,}0832$ t/ha a $1{,}2832$ t/ha. Como o intervalo \textbf{contém o valor 0}, conclui-se que não há evidência estatística suficiente para afirmar categoricamente que há distinção na média populacional de produtividade final atestada entre as duas variedades de soja nestas condições amostrais limitantes.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 13}
+\textit{(Retirado de: Slide "Aula 7.1 - Intervalo de confiança para duas populações", Exercício 5 - pág. 139)}
+
+Uma pesquisa de satisfação comparou a proporção de clientes satisfeitos entre duas lojas. Dados:
+Loja A: $n_A = 150$, $x_A = 120$ clientes satisfeitos
+Loja B: $n_B = 180$, $x_B = 126$ clientes satisfeitos
+
+\vspace{0.3cm}
+\noindent\textbf{Extração de Dados:} \\
+$n_A = 150$, $x_A = 120 \implies \hat{p}_A = \frac{120}{150} = 0{,}80$. \\
+$n_B = 180$, $x_B = 126 \implies \hat{p}_B = \frac{126}{180} = 0{,}70$. \\
+$1-\alpha = 0{,}95 \implies \alpha = 0{,}05$.
+
+\medskip\noindent\textbf{(a)} Verifique as condições para usar o IC (aproximação Normal).
+
+\noindent Para garantir o uso da aproximação Normal em casos de proporções, os sucessos e falhas contabilizados nas amostras devem ser $\ge 5$:
+\begin{align*}
+n_A\hat{p}_A &= 120 \ge 5 & n_A(1-\hat{p}_A) &= 30 \ge 5 \\
+n_B\hat{p}_B &= 126 \ge 5 & n_B(1-\hat{p}_B) &= 54 \ge 5
+\end{align*}
+\textbf{Conclusão:} Como todas as contagens são manifestamente maiores que 5, as condições para a aproximação Normal estão satisfeitas.
+
+\medskip\noindent\textbf{(b)} Construa um IC de 95\% para $p_A - p_B$.
+
+\noindent \textbf{1. Valor Crítico:}
+Utilizamos a distribuição Normal Padrão ($Z$).
+\begin{align*}
+Z_{0{,}025} &= \boxed{1{,}96}
+\end{align*}
+
+\noindent \textbf{2. Diferença Pontual:}
+\begin{align*}
+\hat{p}_A - \hat{p}_B &= 0{,}80 - 0{,}70 = \boxed{0{,}10}
+\end{align*}
+
+\noindent \textbf{3. Erro Padrão (EP):}
+\begin{align*}
+EP &= \sqrt{\frac{\hat{p}_A(1-\hat{p}_A)}{n_A} + \frac{\hat{p}_B(1-\hat{p}_B)}{n_B}} \\
+EP &= \sqrt{\frac{0{,}80 \times 0{,}20}{150} + \frac{0{,}70 \times 0{,}30}{180}} = \sqrt{\frac{0{,}16}{150} + \frac{0{,}21}{180}} \\
+EP &= \sqrt{0{,}001067 + 0{,}001167} = \sqrt{0{,}002234} \approx \boxed{0{,}0473}
+\end{align*}
+
+\noindent \textbf{4. Margem de Erro (E):}
+\begin{align*}
+E &= Z_{\alpha/2} \times EP = 1{,}96 \times 0{,}0473 \approx \boxed{0{,}0927}
+\end{align*}
+
+\noindent \textbf{5. Construção do IC:}
+\begin{align*}
+IC(p_A - p_B; 95\%) &= [0{,}10 - 0{,}0927 \,;\, 0{,}10 + 0{,}0927] = \boxed{[0{,}0073 \,;\, 0{,}1927]}
+\end{align*}
+
+\medskip\noindent\textbf{(c)} Interprete o resultado.
+
+\noindent \textbf{Interpretação:} Estima-se, com 95\% de confiança, que a verdadeira diferença percentual na taxa de satisfação populacional (Loja A - Loja B) caia entre $0{,}73\%$ e $19{,}27\%$. Como o intervalo \textbf{não contém o zero} e abrange inteiramente a região positiva, conclui-se formalmente que a proporção originária de clientes satisfeitos na Loja A é estatisticamente superior à da Loja B.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 14}
+\textit{(Retirado de: Slide "Aula 7.1 - Intervalo de confiança para duas populações", Exercício 6 - pág. 140)}
+
+Um laboratório testa a precisão de uma balança, pesando 12 vezes o mesmo objeto.
+Dados: $n = 12$ medições. Variância amostral: $s^2 = 0{,}36 \text{ g}^2$
+
+\vspace{0.3cm}
+\noindent\textbf{Extração de Dados:} \\
+$n = 12 \implies gl = 11$, $S^2 = 0{,}36 \text{ g}^2$. \\
+$1-\alpha = 0{,}90 \implies \alpha = 0{,}10$.
+
+\medskip\noindent\textbf{(a)} Construa um IC de 90\% para a variância verdadeira $\sigma^2$.
+
+\noindent \textbf{1. Valores Críticos:}
+Assumindo a premissa de normalidade populacional, balizamos via distribuição Qui-Quadrado ($\chi^2$) em $gl = 11$. Para as caudas de $\alpha/2 = 0{,}05$ e $1-\alpha/2 = 0{,}95$:
+\begin{align*}
+\chi^2_{0{,}95; \, 11} &= \boxed{4{,}575} \\
+\chi^2_{0{,}05; \, 11} &= \boxed{19{,}675}
+\end{align*}
+
+\noindent \textbf{2. Construção do IC:}
+\begin{align*}
+IC(\sigma^2; 90\%) &= \left[ \frac{(n-1)S^2}{\chi^2_{0{,}05}} \,;\, \frac{(n-1)S^2}{\chi^2_{0{,}95}} \right] \\
+IC(\sigma^2; 90\%) &= \left[ \frac{11 \times 0{,}36}{19{,}675} \,;\, \frac{11 \times 0{,}36}{4{,}575} \right] \\
+IC(\sigma^2; 90\%) &= \left[ \frac{3{,}96}{19{,}675} \,;\, \frac{3{,}96}{4{,}575} \right] \approx \boxed{[0{,}2013 \,;\, 0{,}8656]}
+\end{align*}
+
+\medskip\noindent\textbf{(b)} Construa um IC de 90\% para o desvio padrão verdadeiro $\sigma$.
+
+\noindent \textbf{1. Construção do IC:}
+Extraindo a raiz quadrada matemática exata dos limites delineados para o erro da variância na alínea (a):
+\begin{align*}
+IC(\sigma; 90\%) &= [\sqrt{0{,}2013} \,;\, \sqrt{0{,}8656}] \approx \boxed{[0{,}4487 \,;\, 0{,}9304]}
+\end{align*}
+
+\medskip\noindent\textbf{(c)} Interprete os resultados.
+
+\noindent \textbf{Interpretação:} Estima-se, com 90\% de confiança, que a 
+verdadeira variância da balança esteja entre $0{,}2013 \text{ g}^2$ e 
+$0{,}8656 \text{ g}^2$. Consequentemente, o verdadeiro desvio padrão 
+está estimado entre $0{,}4487 \text{ g}$ e $0{,}9304 \text{ g}$.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 15}
+\textit{(Retirado de: Slide "Aula 7.1 - Intervalo de confiança para duas populações", Exercício 7 - pág. 141)}
+
+Dois operadores medem a mesma peça várias vezes para comparar a precisão de suas medições. Dados:
+Operador 1: $n_1 = 15$, $s^2_1 = 2{,}5 \text{ mm}^2$
+Operador 2: $n_2 = 12$, $s^2_2 = 1{,}8 \text{ mm}^2$
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+Operador 1: $n_1 = 15 \implies gl_1 = 14$, $s^2_1 = 2{,}5$. \\
+Operador 2: $n_2 = 12 \implies gl_2 = 11$, $s^2_2 = 1{,}8$. \\
+$1-\alpha = 0{,}95 \implies \alpha = 0{,}05$.
+
+\medskip\noindent\textbf{(a)} Construa um IC de 95\% para $\sigma^2_1 / \sigma^2_2$.
+
+\noindent \textbf{1. Valores Críticos:} Pela definição do intervalo para razão de variâncias, utilizamos a distribuição F de Snedecor. Buscamos as abscissas que alocam a área $\alpha/2 = 0{,}025$ nas caudas.
+\begin{align*}
+F_{\text{sup}} &= F_{0{,}025}(14, 11) \approx 3{,}359 \\
+F_{\text{inf}} &= F_{0{,}025}(11, 14) \approx 3{,}095
+\end{align*}
+
+\noindent \textbf{2. Razão Pontual:}
+\begin{align*}
+\frac{s^2_1}{s^2_2} &= \frac{2{,}5}{1{,}8} \approx \boxed{1{,}3889}
+\end{align*}
+
+\noindent \textbf{3. Construção do IC:}
+\begin{align*}
+IC\left(\frac{\sigma_1^2}{\sigma_2^2}; \, 95\%\right) &= \left[ \frac{s^2_1}{s^2_2} \times \frac{1}{F_{0{,}025}(14, 11)} \,;\, \frac{s^2_1}{s^2_2} \times F_{0{,}025}(11, 14) \right] \\
+IC\left(\frac{\sigma_1^2}{\sigma_2^2}; \, 95\%\right) &= \left[ 1{,}3889 \times \frac{1}{3{,}359} \,;\, 1{,}3889 \times 3{,}095 \right] \\
+IC\left(\frac{\sigma_1^2}{\sigma_2^2}; \, 95\%\right) &= \left[ \frac{1{,}3889}{3{,}359} \,;\, 4{,}2986 \right] \approx \boxed{[0{,}4135 \,;\, 4{,}2986]}
+\end{align*}
+
+\medskip\noindent\textbf{(b)} Os operadores têm precisões diferentes?
+
+\noindent \textbf{Interpretação:} Como o intervalo de confiança $[0{,}4135 \,;\, 4{,}2986]$ \textbf{contém o valor 1}, que marca a razão de variâncias estatisticamente iguais ($\sigma_1^2 = \sigma_2^2$), não há evidência estatística, com 95\% de confiança, para afirmar que os operadores possuam precisões diferentes.
+
+\medskip\noindent\textbf{(c)} Que suposição é necessária para a validade do IC?
+
+\noindent É pressuposto obrigatório que as medidas coletadas pelos dois operadores sejam variáveis (População 1 e População 2) provenientes de distribuições normais, contínuas e independentes entre si.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 16}
+\textit{(Retirado de: Slide "Aula 8 - Teste de Hipotese", Exercício 4 - pág. 233)}
+
+Um estudo compara dois tipos de ração para ganho de peso em animais. Para a ração A, com 40 animais, obteve-se ganho médio de 2,5 kg, com desvio padrão populacional conhecido de 0,8 kg. Para a ração B, com 36 animais, ganho médio de 2,2 kg, com desvio padrão populacional conhecido de 0,7 kg. 
+
+\medskip\noindent Teste se há diferença significativa entre as rações, com $\alpha = 0{,}05$.
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+Ração A: $n_A = 40$, $\bar{x}_A = 2{,}5$, $\sigma_A = 0{,}8$. \\
+Ração B: $n_B = 36$, $\bar{x}_B = 2{,}2$, $\sigma_B = 0{,}7$. \\
+Desvios padrão populacionais \textbf{conhecidos}.
+
+\medskip\noindent \textbf{1. Estabelecer as hipóteses:}
+\begin{align*}
+H_0 &: \mu_A - \mu_B = 0 \\
+H_1 &: \mu_A - \mu_B \neq 0
+\end{align*}
+
+\noindent \textbf{2. Fixar o nível de significância:}
+Valor expresso $\alpha = 0{,}05$.
+
+\noindent \textbf{3. Definir a Estatística de Teste:}
+Como os desvios padrão populacionais ($\sigma_A, \sigma_B$) são perfeitamente conhecidos, a estatística modelada exata é $Z$ (Normal Padrão).
+\begin{align*}
+Z &= \frac{(\bar{x}_A - \bar{x}_B) - \Delta}{\sqrt{\frac{\sigma_A^2}{n_A} + \frac{\sigma_B^2}{n_B}}}
+\end{align*}
+
+\noindent \textbf{4. Definir a região de rejeição:}
+Para um teste bilateral de igualdade com nível $\alpha = 0{,}05$, observamos $\alpha/2 = 0{,}025$ nas caudas. O escore crítico provém da distribuição Normal ($Z$):
+\begin{align*}
+Z_{crit} &= \pm 1{,}96
+\end{align*}
+Rejeita-se $H_0$ se $Z_{calc} < -1{,}96$ ou $Z_{calc} > 1{,}96$.
+
+\noindent \textbf{5. Calcular a estatística do teste:}
+Assumindo diferença nula $\Delta = 0$:
+\begin{align*}
+\bar{x}_A - \bar{x}_B &= 2{,}5 - 2{,}2 = \boxed{0{,}3} \\
+EP &= \sqrt{\frac{0{,}8^2}{40} + \frac{0{,}7^2}{36}} = \sqrt{\frac{0{,}64}{40} + \frac{0{,}49}{36}} = \sqrt{0{,}016 + 0{,}013611} \approx \sqrt{0{,}029611} \approx \boxed{0{,}1721} \\
+Z_{calc} &= \frac{0{,}3 - 0}{0{,}1721} \approx \boxed{1{,}743}
+\end{align*}
+
+\noindent \textbf{6. Tomar a decisão estatística:}
+Como $-1{,}96 \le 1{,}743 \le 1{,}96$, o escore recai na região de não rejeição. Portanto, a decisão objetiva é: \textbf{Não rejeitar $H_0$}.
+
+\noindent \textbf{7. Interpretar a decisão:}
+Não há evidências suficientes para afirmar, ao nível de significância de 5\%, que exista diferença estatisticamente significativa nos ganhos de peso acarretados pelas rações A e B. As eficácias médias em engorda comportam-se de modo estatisticamente equivalente.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 17}
+\textit{(Retirado de: Slide "Aula 8 - Teste de Hipotese", Exercício 5 - pág. 234)}
+
+Dois métodos de ensino são comparados. No método tradicional, 18 alunos tiveram média 68 e desvio padrão 6. No método novo, 15 alunos tiveram média 72 e desvio padrão 5. 
+
+\medskip\noindent Assumindo variâncias populacionais iguais, teste se o método novo é melhor com $\alpha = 0{,}05$. É necessário verificar alguma suposição? Qual?
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+Método Tradicional (1): $n_1 = 18$, $\bar{x}_1 = 68$, $s_1 = 6 \implies s^2_1 = 36$. \\
+Método Novo (2): $n_2 = 15$, $\bar{x}_2 = 72$, $s_2 = 5 \implies s^2_2 = 25$. \\
+Variâncias populacionais \textbf{desconhecidas e assumidas iguais} ($\sigma_1^2 = \sigma_2^2$).
+
+\medskip\noindent \textbf{1. Estabelecer as hipóteses:}
+A intenção é provar que o método novo (2) é superior ao tradicional (1), ou seja, $\mu_2 > \mu_1$.
+\begin{align*}
+H_0 &: \mu_2 - \mu_1 \le 0 \\
+H_1 &: \mu_2 - \mu_1 > 0
+\end{align*}
+
+\noindent \textbf{2. Fixar o nível de significância:}
+Valor expresso $\alpha = 0{,}05$.
+
+\noindent \textbf{3. Definir a Estatística de Teste:}
+Como utilizamos amostras empíricas e variâncias desconhecidas assumidas iguais, a estatística recomendada é $t$ de Student com variância combinada ($S^2_p$) e graus de liberdade $gl = n_1 + n_2 - 2 = 18 + 15 - 2 = 31$.
+\begin{align*}
+t &= \frac{(\bar{x}_2 - \bar{x}_1) - \Delta}{\sqrt{S^2_p \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}}
+\end{align*}
+
+\noindent \textbf{4. Definir a região de rejeição:}
+Para um teste unilateral superior com $\alpha = 0{,}05$ e $gl = 31$, inferimos o valor limite diretivo na cauda direita da distribuição $t$:
+\begin{align*}
+t_{crit} &= \boxed{1{,}6955}
+\end{align*}
+Rejeita-se $H_0$ se $t_{calc} > 1{,}6955$.
+
+\noindent \textbf{5. Calcular a estatística do teste:}
+Sendo a diferença paramétrica testada $\Delta = 0$:
+\begin{align*}
+S^2_p &= \frac{(18-1)36 + (15-1)25}{18+15-2} = \frac{612 + 350}{31} = \frac{962}{31} \approx \boxed{31{,}0323} \\
+EP &= \sqrt{31{,}0323 \left( \frac{1}{18} + \frac{1}{15} \right)} = \sqrt{31{,}0323 \left( \frac{11}{90} \right)} \approx \boxed{1{,}9475} \\
+t_{calc} &= \frac{72 - 68}{1{,}9475} = \frac{4}{1{,}9475} \approx \boxed{2{,}0539}
+\end{align*}
+
+\noindent \textbf{6. Tomar a decisão estatística:}
+Como $2{,}0539 > 1{,}6955$, a métrica recai ativamente na região crítica. Portanto, a decisão objetiva é: \textbf{Rejeitar $H_0$}.
+
+\noindent \textbf{7. Interpretar a decisão e suposições:}
+Há evidências estatísticas suficientes, a 5\% de significância, para afirmar 
+que o método novo resultou em desempenho superior ao tradicional. \\
+\textbf{Suposição necessária:} Como as amostras são pequenas ($n_1, n_2 < 30$), 
+é necessário assumir que as notas provêm de populações com \textbf{distribuição 
+Normal} (além da homocedasticidade já assumida no enunciado).
+
+% ═══════════════════════════════════════════════
+\section*{Questão 18}
+\textit{(Retirado de: Slide "Aula 8 - Teste de Hipotese", Exercício 6 - pág. 234)}
+
+Um programa de redução de peso avaliou 12 participantes antes e depois do programa. A média das diferenças (depois - antes) foi de -3,2 kg (ou seja, redução de 3,2 kg em média), com desvio padrão das diferenças de 2,5 kg. 
+
+\medskip\noindent Teste se o programa é eficaz na redução de peso, com $\alpha = 0{,}01$. A suposição de normalidade das diferenças foi verificada.
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+$d_i = \text{Depois} - \text{Antes}$. Variável base empírica é a \textbf{redução} ($d_i < 0$ implica que o indivíduo perdeu peso). \\
+$n = 12 \implies gl = 11$, $\bar{d} = -3{,}2$, $s_d = 2{,}5$.
+
+\medskip\noindent \textbf{1. Estabelecer as hipóteses:}
+A eficácia almejada do programa depende estritamente de uma regressão contínua no peso dos avaliados ($d_i$ negativo).
+\begin{align*}
+H_0 &: \mu_d \ge 0 \\
+H_1 &: \mu_d < 0
+\end{align*}
+
+\noindent \textbf{2. Fixar o nível de significância:}
+Valor nominal $\alpha = 0{,}01$.
+
+\noindent \textbf{3. Definir a Estatística de Teste:}
+Como os dados são pareados e o desvio padrão populacional é desconhecido, 
+emprega-se o teste $t$ de Student para amostras dependentes com $gl = n - 1 = 11$:
+\begin{align*}
+t &= \frac{\bar{d} - \Delta_0}{\frac{s_d}{\sqrt{n}}}
+\end{align*}
+
+\noindent \textbf{4. Definir a região de rejeição:}
+Sendo o teste formatado correlacionado sob diretriz restritiva ($\alpha = 0{,}01$), o eixo de rejeição restringe-se à cauda esquerda rigorosa:
+\begin{align*}
+t_{crit} &= \boxed{-2{,}7181}
+\end{align*}
+Rejeita-se $H_0$ se $t_{calc} < -2{,}7181$.
+
+\noindent \textbf{5. Calcular a estatística do teste:}
+Validando numericamente a referencial nula ($\Delta_0 = 0$):
+\begin{align*}
+EP &= \frac{s_d}{\sqrt{n}} = \frac{2{,}5}{\sqrt{12}} \approx \boxed{0{,}7217} \\
+t_{calc} &= \frac{-3{,}2 - 0}{0{,}7217} \approx \boxed{-4{,}4341}
+\end{align*}
+
+\noindent \textbf{6. Tomar a decisão estatística:}
+Como $-4{,}4341 < -2{,}7181$, o valor calculado cai na região de rejeição. 
+Portanto, a decisão é: \textbf{Rejeitar $H_0$}.
+
+\noindent \textbf{7. Interpretar a decisão:}
+Há evidências estatísticas suficientes, a 1\% de significância, para afirmar 
+que o programa é eficaz na redução de peso, resultando em perda média 
+significativa nos participantes avaliados.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 19}
+\textit{(Retirado de: Slide "Aula 8 - Teste de Hipotese", Exercício 7 - pág. 235)}
+
+Um estudo comparou dois tipos de tratamento para redução da pressão arterial. Os resultados (redução em mmHg) foram:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{} & \textbf{Tratamento A} & \textbf{Tratamento B} \\ \midrule
+\textbf{Tamanho da amostra} & $n_1 = 15$ & $n_2 = 12$ \\
+\textbf{Média amostral} & $\bar{x}_1 = 12{,}5$ & $\bar{x}_2 = 8{,}3$ \\
+\textbf{Desvio padrão amostral} & $s_1 = 4{,}2$ & $s_2 = 2{,}8$ \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\medskip\noindent Considerando que as variâncias populacionais são desconhecidas e diferentes e as populações são normais, teste se o tratamento A é mais eficaz que o tratamento B, com nível de significância $\alpha = 0{,}05$.
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+Tratamento A (1): $n_1 = 15$, $\bar{x}_1 = 12{,}5$, $s_1 = 4{,}2 \implies s^2_1 = 17{,}64$. \\
+Tratamento B (2): $n_2 = 12$, $\bar{x}_2 = 8{,}3$, $s_2 = 2{,}8 \implies s^2_2 = 7{,}84$. \\
+Variâncias populacionais \textbf{desconhecidas e diferentes} ($\sigma_1^2 \neq \sigma_2^2$). Populações normais assumidas.
+
+\medskip\noindent \textbf{1. Estabelecer as hipóteses:}
+Pretende-se provar que o Tratamento A é mais eficaz (gera maior redução aferida), ou seja, $\mu_1 > \mu_2$.
+\begin{align*}
+H_0 &: \mu_1 - \mu_2 \le 0 \\
+H_1 &: \mu_1 - \mu_2 > 0
+\end{align*}
+
+\noindent \textbf{2. Fixar o nível de significância:}
+Valor expresso $\alpha = 0{,}05$.
+
+\noindent \textbf{3. Definir a Estatística de Teste:}
+Como utilizamos amostras empíricas com variâncias populacionais assumidamente diferentes, recorre-se ao teste $t$ de Student sob a \textbf{aproximação de Welch} para graus de liberdade.
+\begin{align*}
+t &= \frac{(\bar{x}_1 - \bar{x}_2) - \Delta}{\sqrt{\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2}}}
+\end{align*}
+
+\noindent \textbf{4. Definir a região de rejeição:}
+Calculando os graus de liberdade aferidos por Welch ($\nu$):
+\begin{align*}
+\nu &= \frac{\left(\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2}\right)^2}{\frac{(s^2_1/n_1)^2}{n_1-1} + \frac{(s^2_2/n_2)^2}{n_2-1}} = \frac{\left(\frac{17{,}64}{15} + \frac{7{,}84}{12}\right)^2}{\frac{(17{,}64/15)^2}{14} + \frac{(7{,}84/12)^2}{11}} \approx \boxed{24{,}3223}
+\end{align*}
+Abaixando conservadoramente $\nu$ para $24$, o limite crítico na cauda direita da distribuição $t$ será:
+\begin{align*}
+t_{crit} &= \boxed{1{,}7109}
+\end{align*}
+Rejeita-se $H_0$ se $t_{calc} > 1{,}7109$.
+
+\noindent \textbf{5. Calcular a estatística do teste:}
+Testando frente à hipótese de diferença nula $\Delta = 0$:
+\begin{align*}
+EP &= \sqrt{\frac{17{,}64}{15} + \frac{7{,}84}{12}} \approx \boxed{1{,}3525} \\
+t_{calc} &= \frac{12{,}5 - 8{,}3}{1{,}3525} = \frac{4{,}2}{1{,}3525} \approx \boxed{3{,}1053}
+\end{align*}
+
+\noindent \textbf{6. Tomar a decisão estatística:}
+Como $3{,}1053 > 1{,}7109$, o escore recai de forma consolidada dentro da região crítica superior. Portanto, a decisão objetiva é: \textbf{Rejeitar $H_0$}.
+
+\noindent \textbf{7. Interpretar a decisão:}
+Existem evidências estatísticas significativas, ao nível de 5\%, para certificar na prática que o Tratamento A exibe uma eficácia média de redução da pressão arterial validamente superior ao induzido pelo Tratamento B.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 20}
+\textit{(Retirado de: Slide "Aula 8 - Teste de Hipotese", Exercício 8 - pág. 239)}
+
+Uma pesquisa eleitoral entrevistou eleitores em duas cidades sobre a intenção de voto no candidato X. Os resultados foram:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{} & \textbf{Cidade A} & \textbf{Cidade B} \\ \midrule
+\textbf{Número de eleitores entrevistados} & $n_A = 200$ & $n_B = 180$ \\
+\textbf{Número que votariam no candidato X} & $x_A = 110$ & $x_B = 85$ \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\medskip\noindent Teste se a proporção de eleitores do candidato X é maior na cidade A do que na cidade B, com nível de significância $\alpha = 0{,}05$.
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+Cidade A: $n_A = 200$, sucessos $x_A = 110 \implies \hat{p}_A = \frac{110}{200} = 0{,}5500$. \\
+Cidade B: $n_B = 180$, sucessos $x_B = 85 \implies \hat{p}_B = \frac{85}{180} \approx 0{,}4722$.
+
+\medskip\noindent \textbf{1. Estabelecer as hipóteses:}
+Deseja-se atestar que a proporção na cidade A é maior que na cidade B ($p_A > p_B$).
+\begin{align*}
+H_0 &: p_A - p_B \le 0 \\
+H_1 &: p_A - p_B > 0
+\end{align*}
+
+\noindent \textbf{2. Fixar o nível de significância:}
+Valor expresso $\alpha = 0{,}05$.
+
+\noindent \textbf{3. Definir a Estatística de Teste:}
+Tratando referencial de comparação de proporções populacionais autônomas compostas de amostras consolidadas ($n > 30$), aplicamos a estatística Normal Padrão ($Z$). Assumindo a igualdade parametrizada sob a hipótese nula ($p_A = p_B$), extrai-se a proporção amostral combinada $\hat{p}$:
+\begin{align*}
+\hat{p} &= \frac{x_A + x_B}{n_A + n_B} = \frac{110 + 85}{200 + 180} = \frac{195}{380} \approx \boxed{0{,}5132} \\
+Z &= \frac{(\hat{p}_A - \hat{p}_B) - \Delta}{\sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_A} + \frac{1}{n_B}\right)}}
+\end{align*}
+
+\noindent \textbf{4. Definir a região de rejeição:}
+Dado um escopo avaliativo unilateral de direção superior para margem de tolerância $\alpha = 0{,}05$, o escore limite de distribuição $Z$ provém do corte à direita:
+\begin{align*}
+Z_{crit} &= \boxed{1{,}6449}
+\end{align*}
+Rejeita-se $H_0$ se $Z_{calc} > 1{,}6449$.
+
+\noindent \textbf{5. Calcular a estatística do teste:}
+Arbitrando o referencial isolado nulo testificado $\Delta = 0$:
+\begin{align*}
+EP &= \sqrt{0{,}5132 \times (1 - 0{,}5132) \times \left( \frac{1}{200} + \frac{1}{180} \right)} \approx \boxed{0{,}0514} \\
+Z_{calc} &= \frac{0{,}5500 - 0{,}4722}{0{,}0514} = \frac{0{,}0778}{0{,}0514} \approx \boxed{1{,}5146}
+\end{align*}
+
+\noindent \textbf{6. Tomar a decisão estatística:}
+Como $1{,}5146 \le 1{,}6449$, o valor calculado não ultrapassa o limite 
+crítico e permanece na região de não rejeição. Portanto, a decisão é: 
+\textbf{Não rejeitar $H_0$}.
+
+\noindent \textbf{7. Interpretar a decisão:}
+Não há evidências estatísticas suficientes, ao nível de 5\% de 
+significância, para afirmar que a proporção de eleitores favoráveis 
+ao candidato X é maior na cidade A do que na cidade B.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 21}
+\textit{(Retirado de: Slide "Aula 8 - Teste de Hipotese", Exercício 9 - pág. 245)}
+
+Um laboratório testa dois métodos de análise química para verificar se apresentam a mesma precisão (variabilidade). Os resultados de 10 análises com cada método foram:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Método} & \textbf{Método 1} & \textbf{Método 2} \\ \midrule
+\textbf{Tamanho da amostra} & $n_1 = 10$ & $n_2 = 10$ \\
+\textbf{Variância amostral} & $s^2_1 = 4{,}8$ & $s^2_2 = 2{,}3$ \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\medskip\noindent O cientista de dados fez um teste e verificou normalidade dos dados. Teste se o método 1 apresenta maior variabilidade que o método 2, com nível de significância $\alpha = 0{,}05$.
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+Método 1: $n_1 = 10 \implies gl_1 = 9$, $s^2_1 = 4{,}8$. \\
+Método 2: $n_2 = 10 \implies gl_2 = 9$, $s^2_2 = 2{,}3$. \\
+Distribuições populacionais atestadamente normais.
+
+\medskip\noindent \textbf{1. Estabelecer as hipóteses:}
+A suspeita motriz prega que a variância do método 1 desponte estritamente maior que a segunda ($\sigma^2_1 > \sigma^2_2$, isto é, $\frac{\sigma^2_1}{\sigma^2_2} > 1$).
+\begin{align*}
+H_0 &: \sigma^2_1 \le \sigma^2_2 \\
+H_1 &: \sigma^2_1 > \sigma^2_2
+\end{align*}
+
+\noindent \textbf{2. Fixar o nível de significância:}
+Valor expresso $\alpha = 0{,}05$.
+
+\noindent \textbf{3. Definir a Estatística de Teste:}
+Como o objetivo é comparar variâncias de duas populações normais 
+independentes, utiliza-se a distribuição $F$ de Snedecor:
+\begin{align*}
+F &= \frac{s^2_1}{s^2_2}
+\end{align*}
+
+\noindent \textbf{4. Definir a região de rejeição:}
+Para um teste estritamente unilateral atrelado à cauda direita sob cota estanque de probabilidade $\alpha = 0{,}05$ transpassando graus de liberdade conjunturais ($gl_1=9, gl_2=9$):
+\begin{align*}
+F_{crit} = F_{0{,}05}(9, 9) &= \boxed{3{,}1789}
+\end{align*}
+Rejeita-se $H_0$ se $F_{calc} > 3{,}1789$.
+
+\noindent \textbf{5. Calcular a estatística do teste:}
+Substituindo pontualmente em fração as variâncias amostrais isoladas e documentadas:
+\begin{align*}
+F_{calc} &= \frac{4{,}8}{2{,}3} \approx \boxed{2{,}0870}
+\end{align*}
+
+
+\noindent \textbf{6. Tomar a decisão estatística:}
+Como $2{,}0870 \le 3{,}1789$, o valor calculado não ultrapassa o limite 
+crítico e permanece na região de não rejeição. Portanto, a decisão é: 
+\textbf{Não rejeitar $H_0$}.
+
+\noindent \textbf{7. Interpretar a decisão:}
+Não há evidências estatísticas suficientes, ao nível de 5\% de 
+significância, para afirmar que o Método 1 apresenta maior 
+variabilidade que o Método 2.
+
+% ═══════════════════════════════════════════════
+\section*{Questão 22}
+\textit{(Retirado de: Slide "Aula 9 - Alguns Testes Especiais", Exercício 1 - pág. 269)}
+
+Uma empresa de telefonia quer saber se existe relação entre o plano contratado (Básico, Intermediário, Premium) e a satisfação do cliente (Satisfeito, Insatisfeito). Foram entrevistados 300 clientes. (Os dados geraram uma tabela de contingência a ser analisada, totalizando: Básico = 60 satisfeitos e 40 insatisfeitos; Intermediário = 75 satisfeitos e 25 insatisfeitos; Premium = 85 satisfeitos e 15 insatisfeitos).
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+Variables Nominais Cruzadas: Plano Contratado (Básico, Intermediário, Premium) e Satisfação (Satisfeito, Insatisfeito). \\
+Total Geral Contabilizado: $N = 300$.
+
+\medskip\noindent\textbf{(a)} Construa a tabela de contingência entre plano e satisfação.
+
+\noindent \textbf{2. Construir Tabela de Contingência (Frequências Observadas):}
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Plano} & \textbf{Satisfeito} & \textbf{Insatisfeito} & \textbf{Total ($T_{linha}$)} \\ \midrule
+\textbf{Básico} & 60 & 40 & $100$ \\
+\textbf{Intermediário} & 75 & 25 & $100$ \\
+\textbf{Premium} & 85 & 15 & $100$ \\ \midrule
+\textbf{Total ($T_{coluna}$)} & $220$ & $80$ & $N = \textbf{300}$ \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\medskip\noindent\textbf{(c)} Calcule as frequências esperadas. Alguma célula tem valor esperado $< 5$?
+
+\noindent \textbf{3. Calcular Totais Marginais e Frequências Esperadas:} Usando a fórmula global $E_{ij} = \frac{(\text{Total Linha } i) \times (\text{Total Coluna } j)}{N}$, observamos simetria de linhas, gerando os aportes para todos os planos fixos:
+\begin{align*}
+E_{\text{Qualquer Plano, Satisfeito}} &= \frac{100 \times 220}{300} \approx \boxed{73{,}3333} \\
+E_{\text{Qualquer Plano, Insatisfeito}} &= \frac{100 \times 80}{300} \approx \boxed{26{,}6667}
+\end{align*}
+\textbf{Conclusão Analítica Auxiliar:} Não existem absolutamente células contendo aporte projetado inferior à baliza métrica. Todas excedem folgadamente o valor $< 5$, blindando categoricamente a presunção aplicável para a inferência paramétrica do teste Qui-Quadrado.
+
+\medskip\noindent\textbf{(b)} Existe associação entre o tipo de plano e a satisfação do cliente? (use $\alpha = 0{,}05$).
+
+\noindent \textbf{1. Definir as Hipóteses:}
+\begin{align*}
+H_0 &: \text{O tipo de plano e o perfil de satisfação são estocasticamente independentes.} \\
+H_1 &: \text{Há dependência categórica e associação entre plano e índice de satisfação.}
+\end{align*}
+
+\noindent \textbf{4. Calcular a estatística $\chi^2_{calc}$:}
+Consiste na somatória do diferencial modular ponderado nas 6 células base da matriz associativa $\sum \frac{(Obs - Esp)^2}{Esp}$:
+\begin{align*}
+\chi^2_{calc} &= \frac{(60 - 73{,}3333)^2}{73{,}3333} + \frac{(40 - 26{,}6667)^2}{26{,}6667} + \dots + \frac{(15 - 26{,}6667)^2}{26{,}6667} \\
+\chi^2_{calc} &\approx \boxed{16{,}1932}
+\end{align*}
+
+\noindent \textbf{5. Determinar os Graus de Liberdade:}
+\begin{align*}
+gl &= (\text{linhas} - 1) \times (\text{colunas} - 1) = (3 - 1) \times (2 - 1) = \boxed{2}
+\end{align*}
+
+\noindent \textbf{6. Comparar e concluir:}
+Para $\alpha = 0{,}05$ estanque com sobrecorte de liberação em escopo $gl = 2$, o limiar fronteiriço impeditivo referencial é extraído como $\chi^2_{critico} = \boxed{5{,}9915}$. \\
+Fato notório, como $\chi^2_{calc} \, (16{,}1932) > \chi^2_{critico} \, (5{,}9915)$, o preceito analítico orienta textualmente à exclusão sumária. A decisão ponta consiste em: \textbf{Rejeitar $H_0$}.
+
+\noindent \textbf{Conclusão da Associação:}
+Há evidências estatísticas suficientes, ao nível de 5\% de significância, 
+para afirmar que existe associação entre o tipo de plano contratado e o 
+grau de satisfação do cliente.
+
+\section*{Questão 23}
+\textit{(Retirado de: Slide "Aula 9 - Alguns Testes Especiais", Exercício 2 - pág. 270)}
+
+Um supermercado testou três diferentes embalagens para um mesmo produto e quis verificar se a preferência dos consumidores é influenciada pela embalagem. Os dados coletados mostram a quantidade de pessoas que escolheram cada embalagem: Observado = c(45, 60, 35) para as Embalagens: A, B, C.
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+Valores observados: $O_A = 45$, $O_B = 60$, $O_C = 35$. \\
+Total de consumidores avaliados: $N = 45 + 60 + 35 = 140$.
+
+\medskip\noindent\textbf{(a)} Teste a hipótese de que as embalagens são igualmente preferidas (distribuição uniforme).
+
+\noindent \textbf{1. Estabelecer as hipóteses:}
+\begin{align*}
+H_0 &: \text{As embalagens são igualmente preferidas ($p_A = p_B = p_C = \normalsize 1/3$).} \\
+H_1 &: \text{Pelo menos uma das proporções difere das demais.}
+\end{align*}
+
+\noindent \textbf{2 e 3. Organizar Frequências Esperadas ($E_i$):}
+Assumindo distribuição uniforme sob $H_0$:
+\begin{align*}
+E_A = E_B = E_C &= \frac{140}{3} \approx \boxed{46{,}6667}
+\end{align*}
+
+\noindent \textbf{4. Calcular a estatística $\chi^2_{calc}$:}
+Invocando o Teste Qui-Quadrado de Aderência (Goodness-of-Fit), processamos a somatória basilar:
+\begin{align*}
+\chi^2_{calc} &= \frac{(45 - 46{,}6667)^2}{46{,}6667} + \frac{(60 - 46{,}6667)^2}{46{,}6667} + \frac{(35 - 46{,}6667)^2}{46{,}6667} \\
+&= \frac{(-1{,}6667)^2}{46{,}6667} + \frac{(13{,}3333)^2}{46{,}6667} + \frac{(-11{,}6667)^2}{46{,}6667} \\
+&= \frac{2{,}7779}{46{,}6667} + \frac{177{,}7769}{46{,}6667} + \frac{136{,}1119}{46{,}6667} \\
+&= 0{,}0595 + 3{,}8095 + 2{,}9167 \approx \boxed{6{,}7857}
+\end{align*}
+
+\medskip\noindent\textbf{(b)} Qual é o p-valor? O que você conclui?
+
+\noindent \textbf{5. Determinar Graus de Liberdade e $p$-valor:}
+$gl = k - 1 = 3 - 1 = \boxed{2}$. \\
+A área à direita de $\chi^2 = 6{,}7857$ com $gl = 2$ fornece o $p$-valor:
+\begin{align*}
+\text{p-valor} &\approx \boxed{0{,}0336}
+\end{align*}
+
+\noindent \textbf{6 e 7. Conclusão Conjunta:} Como $0{,}0336 < 0{,}05$,
+\textbf{rejeitamos $H_0$}. Há evidências estatísticas de que as embalagens
+não são igualmente preferidas pelos consumidores.
+
+\medskip\noindent\textbf{(c)} Se houver diferença, qual embalagem parece ser a preferida?
+
+\noindent Inspecionando as frequências observadas ($O_A = 45$, $O_B = 60$, $O_C = 35$), a \textbf{Embalagem B} foi a mais escolhida pelos consumidores.
+
+\medskip\noindent\textbf{(d)} Que recomendações você faria para o supermercado?
+
+\noindent Como a Embalagem B obteve a maior frequência de escolhas,
+recomenda-se ao supermercado priorizar o uso dessa embalagem, pois ela
+demonstrou maior aceitação entre os consumidores entrevistados.
+
+
+% ═══════════════════════════════════════════════
+\section*{Questão 24}
+\textit{(Retirado de: Slide "Aula 9 - Alguns Testes Especiais", Exercício 3 - pág. 271)}
+
+Um estudo clínico avaliou a eficácia de três tratamentos diferentes (A, B, C) para uma doença. Os pacientes foram classificados como "Curados" ou "Não Curados" após o tratamento. Contagens observadas: A (Curado=30, Não Curado=20); B (Curado=40, Não Curado=10); C (Curado=25, Não Curado=25).
+
+\vspace{0.3cm}
+\noindent\textbf{Resolução:}\\
+\textbf{Extração de Dados:} \\
+Variável Linha ($i$): Tipo de Tratamento (A, B, C). \\
+Variável Coluna ($j$): Resultado (Curado, Não Curado). \\
+Total geral: $N = 150$.
+
+\medskip\noindent\textbf{(a)} Existe associação entre o tipo de tratamento e a cura?
+
+\noindent \textbf{1. Estabelecer as hipóteses:}
+\begin{align*}
+H_0 &: \text{A taxa de cura independe do tipo de tratamento aplicado.} \\
+H_1 &: \text{Existe associação entre o tipo de tratamento e a taxa de cura.}
+\end{align*}
+
+\noindent \textbf{2 e 3. Frequências Esperadas ($E_{ij}$):}
+Como cada tratamento foi aplicado em 50 pacientes ($T_{linha} = 50$), e os totais de coluna são $T_{Curado} = 95$ e $T_{NãoCurado} = 55$:
+\begin{align*}
+E_{\text{Curado}} &= \frac{50 \times 95}{150} \approx 31{,}6667 \\
+E_{\text{Não Curado}} &= \frac{50 \times 55}{150} \approx 18{,}3333
+\end{align*}
+Como todos os valores esperados são maiores que 5, a condição para uso do Qui-Quadrado está satisfeita.
+
+\noindent \textbf{4. Calcular a estatística $\chi^2_{calc}$:}
+\begin{align*}
+\chi^2_{calc} &= \frac{(30-31{,}6667)^2}{31{,}6667} + \frac{(20-18{,}3333)^2}{18{,}3333} \\
+&+ \frac{(40-31{,}6667)^2}{31{,}6667} + \frac{(10-18{,}3333)^2}{18{,}3333} \\
+&+ \frac{(25-31{,}6667)^2}{31{,}6667} + \frac{(25-18{,}3333)^2}{18{,}3333} \\
+&= 0{,}0881 + 0{,}1521 + 2{,}1881 + 3{,}7812 + 1{,}4070 + 2{,}4306 \\
+&\approx \boxed{10{,}0471}
+\end{align*}
+
+\noindent \textbf{5. Graus de liberdade e valor crítico:}
+\begin{align*}
+gl &= (3-1) \times (2-1) = \boxed{2} \\
+\chi^2_{crit} &= \boxed{5{,}9915} \quad (\alpha = 0{,}05)
+\end{align*}
+
+\noindent \textbf{6 e 7. Decisão e conclusão:}
+Como $\chi^2_{calc} = 10{,}0471 > \chi^2_{crit} = 5{,}9915$, \textbf{rejeitamos $H_0$}. \\
+Há evidências estatísticas suficientes, ao nível de 5\% de significância, para afirmar que existe associação entre o tipo de tratamento e a taxa de cura.
+
+\medskip\noindent\textbf{(b)} Qual tratamento apresenta a maior taxa de cura?
+
+\noindent Com base nas porcentagens calculadas no item (c), o \textbf{Tratamento B} apresenta a maior taxa de cura, com 80\%.
+
+\medskip\noindent\textbf{(c)} Calcule as porcentagens de cura por tratamento.
+
+\begin{itemize}
+    \item \textbf{Tratamento A:} $\dfrac{30}{50} = \boxed{60\%}$
+    \item \textbf{Tratamento B:} $\dfrac{40}{50} = \boxed{80\%}$
+    \item \textbf{Tratamento C:} $\dfrac{25}{50} = \boxed{50\%}$
+\end{itemize}
+
+\medskip\noindent\textbf{(d)} Se um novo paciente chegar, qual tratamento você recomendaria? Por quê?
+
+\noindent Recomenda-se o \textbf{Tratamento B}, pois apresentou a maior taxa de cura (80\%) entre os três tratamentos avaliados, sendo superior ao Tratamento A (60\%) e ao Tratamento C (50\%).
+\end{document}
