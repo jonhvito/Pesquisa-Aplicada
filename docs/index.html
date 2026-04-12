@@ -241,7 +241,13 @@
               $$IC(p_1-p_2)= (\hat p_1-\hat p_2)\pm z_{\alpha/2}\sqrt{\frac{\hat p_1(1-\hat p_1)}{n_1}+\frac{\hat p_2(1-\hat p_2)}{n_2}}$$
               $$\hat p=\frac{x_1+x_2}{n_1+n_2} \quad \text{(no teste sob } H_0:p_1=p_2\text{)}$$
             </div>
-            <p>Cheque se sucessos e falhas são pelo menos 5 em cada amostra.</p>
+            <p>Para usar a aproximação normal, confirme que sucessos e falhas esperados são pelo menos 5.</p>
+            <ul>
+              <li>\(n_1\hat p_1 \ge 5\)</li>
+              <li>\(n_1(1-\hat p_1) \ge 5\)</li>
+              <li>\(n_2\hat p_2 \ge 5\)</li>
+              <li>\(n_2(1-\hat p_2) \ge 5\)</li>
+            </ul>
           </article>
 
           <article class="formula-card" data-formula-key="f-variance" data-focus-target="distribuicoes">
