@@ -363,16 +363,17 @@ $n = 20 \implies gl = 19$, $S^2 = 0{,}0025$, $1 - \alpha = 0{,}95 \implies \alph
 
 \medskip\noindent\textbf{(a)} Construa um intervalo de confiança de 95\% para a variância populacional $\sigma^2$.
 
-\noindent \textbf{1. Valores Críticos:} Como a população é normal, utilizamos a distribuição Qui-Quadrado ($\chi^2$) com $gl = n - 1 = 19$. Para $1 - \alpha = 0{,}95$, buscamos os valores nas caudas conjuntas $\alpha/2 = 0{,}025$ e $1 - \alpha/2 = 0{,}975$:
+\noindent \textbf{1. Valores Críticos:} Como a população é normal, utilizamos a distribuição Qui-Quadrado ($\chi^2$) com $gl = n - 1 = 19$. Para $1 - \alpha = 0{,}95$, calculamos primeiro o quantil de ordem $1-\alpha/2 = 0{,}975$ e depois o quantil de ordem $\alpha/2 = 0{,}025$:
 \begin{align*}
-\chi^2_{0{,}975; \, 19} &= \boxed{8{,}907} \\
-\chi^2_{0{,}025; \, 19} &= \boxed{32{,}852}
+\chi^2_{0{,}975; \, 19} &= \boxed{32{,}852} \\
+\chi^2_{0{,}025; \, 19} &= \boxed{8{,}907}
 \end{align*}
 \noindent \textbf{2. Construção do IC:}
 \begin{align*}
-IC(\sigma^2; 95\%) &= \left[ \frac{(n-1)S^2}{\chi^2_{0{,}025}} \,;\, \frac{(n-1)S^2}{\chi^2_{0{,}975}} \right] \\
+IC(\sigma^2; 95\%) &= \left[ \frac{(n-1)S^2}{\chi^2_{0{,}975}} \,;\, \frac{(n-1)S^2}{\chi^2_{0{,}025}} \right] \\
 IC(\sigma^2; 95\%) &= \left[ \frac{(20-1) \times 0{,}0025}{32{,}852} \,;\, \frac{(20-1) \times 0{,}0025}{8{,}907} \right] \\
-IC(\sigma^2; 95\%) &= \left[ \frac{0{,}0475}{32{,}852} \,;\, \frac{0{,}0475}{8{,}907} \right] \approx \boxed{[0{,}00145 \,;\, 0{,}00533]}
+IC(\sigma^2; 95\%) &= \left[ 0{,}00145 \,;\, 0{,}00533 \right]
+\approx \boxed{[0{,}00145 \,;\, 0{,}00533]}
 \end{align*}
 
 \medskip\noindent\textbf{(b)} Obtenha o intervalo de confiança para o desvio padrão populacional $\sigma$.

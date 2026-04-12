@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.7.23)  22 MAR 2026 14:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.7.23)  12 APR 2026 17:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -268,12 +268,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [2] [3] [4] [5] [6] [7] [8]
-Overfull \hbox (20.39954pt too wide) in paragraph at lines 387--389
+Overfull \hbox (20.39954pt too wide) in paragraph at lines 388--390
 \T1/cmr/m/n/12 Con-se-quen-te-mente, o des-vio pa-drão po-pu-la-ci-o-nal está es-ti-mado en-tre $\OT1/cmr/m/n/12 0[]0380[]$ \T1/cmr/m/n/12 e $\OT1/cmr/m/n/12 0[]0730[]$\T1/cmr/m/n/12 . 
  []
 
 [9] [10] [11] [12] [13] [14] [15] [16] [17] [18]
-Overfull \hbox (3.66505pt too wide) detected at line 802
+Overfull \hbox (3.66505pt too wide) detected at line 803
 []
  []
 
@@ -283,19 +283,19 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [25] [26]
 
-LaTeX Font Warning: Command \normalsize invalid in math mode on input line 1199.
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 1200.
 
 
-LaTeX Font Warning: Command \normalsize invalid in math mode on input line 1199.
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 1200.
 
 
-Overfull \hbox (10.7976pt too wide) in paragraph at lines 1207--1209
+Overfull \hbox (10.7976pt too wide) in paragraph at lines 1208--1210
 \T1/cmr/bx/n/12 4. Cal-cu-lar a es-ta-tís-tica $\OML/cmm/m/it/12 ^^_[]$\T1/cmr/bx/n/12 : \T1/cmr/m/n/12 In-vo-cando o Teste Qui-Quadrado de Ade-rên-cia (Goodness-
  []
 
 [27]
 
-LaTeX Warning: Command \~ invalid in math mode on input line 1262.
+LaTeX Warning: Command \~ invalid in math mode on input line 1263.
 
 Missing character: There is no ã in font cmr8!
 [28] [29{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (./main.aux)
@@ -313,7 +313,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,13n,65p,1021b,251s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on main.pdf (29 pages, 344597 bytes).
+Output written on main.pdf (29 pages, 344547 bytes).
 PDF statistics:
  188 PDF objects out of 1000 (max. 8388607)
  120 compressed objects within 2 object streams

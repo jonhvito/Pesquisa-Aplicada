@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1774199425.41294 "/home/jonh_vito/Área de trabalho/Pesquisa Aplicada/Estudar/Exercícios existentes /main.tex" "main.pdf" "main" 1774199426.33052 0
+["pdflatex"] 1776025641.0399 "/home/jonh_vito/Área de trabalho/Pesquisa Aplicada/Estudar/Exercícios existentes /main.tex" "main.pdf" "main" 1776025641.57705 0
   "/etc/texmf/web2c/texmf.cnf" 1753298780.7438 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jonh_vito/Área de trabalho/Pesquisa Aplicada/Estudar/Exercícios existentes /main.tex" 1774199425.13101 73159 5c99825cbc11ce09f9d9c6da5ae1dc7f ""
+  "/home/jonh_vito/Área de trabalho/Pesquisa Aplicada/Estudar/Exercícios existentes /main.tex" 1776025614.35808 73150 ec6aa8c06ee2f33cd08935edbf085627 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx0600.tfm" 1136768653 3584 ad9fcbc26a2a7bccd6d08b0a5792fbe0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx0800.tfm" 1136768653 3584 269b66e921ba58750c12f7f1c8ea3ebd ""
@@ -87,8 +87,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1753298801.77168 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1753298853 8214478 5da177875bb2c2a94b4f80a5e615ecfc ""
-  "main.aux" 1774199426.23401 132 672f81028c98f0d47d6cde0c866d4793 "pdflatex"
-  "main.tex" 1774199425.13101 73159 5c99825cbc11ce09f9d9c6da5ae1dc7f ""
+  "main.aux" 1776025641.52008 132 672f81028c98f0d47d6cde0c866d4793 "pdflatex"
+  "main.tex" 1776025614.35808 73150 ec6aa8c06ee2f33cd08935edbf085627 ""
   (generated)
   "main.aux"
   "main.log"
