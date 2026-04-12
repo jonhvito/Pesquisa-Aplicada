@@ -254,9 +254,10 @@
             <p class="formula-card-label">Razão de variâncias</p>
             <h3>IC com F</h3>
             <div class="math-block">
-              $$IC\left(\frac{\sigma_1^2}{\sigma_2^2}\right)=\left[\frac{s_1^2}{s_2^2}\cdot\frac{1}{F_{\alpha/2}(gl_1,gl_2)},\ \frac{s_1^2}{s_2^2}\cdot F_{\alpha/2}(gl_2,gl_1)\right]$$
+              $$R=\frac{s_1^2}{s_2^2}$$
+              $$IC\left(\frac{\sigma_1^2}{\sigma_2^2}\right)=\left[\frac{R}{F_{\alpha/2}(gl_1,gl_2)},\ R\cdot F_{\alpha/2}(gl_2,gl_1)\right]$$
             </div>
-            <p>Se o intervalo contém 1, não há evidência de variâncias diferentes.</p>
+            <p>Use \(gl_1=n_1-1\) e \(gl_2=n_2-1\). Se o intervalo contém 1, não há evidência de variâncias diferentes.</p>
           </article>
 
           <article class="formula-card" data-formula-key="chi-variance" data-focus-target="distribuicoes">
